@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Client | Socket TCP</title>
+</head>
+<body>
+	<h1>Hello World</h1>
+
+	<button type="button" onclick="send_data(1);">Trigger Touchpad</button>
+	<button type="button" onclick="send_data(0);">Trigger Shopping</button>
+	
+	
+	<script type="text/javascript">
+
+	var ws = new WebSocket("ws://localhost:8887/pos");
+
+	function send_data(trigger) {
+		ws.send("s_event," + trigger);
+	}
+
+	</script>
+</body>
+</html>
