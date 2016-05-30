@@ -1,0 +1,28 @@
+div{
+	position: relative;
+}
+.model{
+	position: absolute;
+    left: 500px;
+    top: 30px;
+    z-index: 0;
+}
+
+.cloth{
+	position:absolute;
+	left:395px;
+	top:110px;
+	z-index: 1;
+}
+.box{
+	position:absolute;
+	left:755px;
+	top:805px;
+	z-index: -1;
+}
+.shoe{
+	position:absolute;
+	left:765px;
+	top:717px;
+	z-index: 1;
+}

@@ -2,9 +2,19 @@
 <html>
 <head>
 	<title>Client | Socket TCP</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<h1>Hello World</h1>
+
+	<div>
+		<img data-id="0" src="model.png" class="model" width="300px" height="900px" />
+		<img data-id="0" src="box.png" class="box" width="220px" height="120px" />
+
+		<img data-id="1" id="cloth" src="dress.png" class="cloth" width="500px" height="550px" />
+		<img data-id="2" id="shoe" src="shoe.png" class="shoe" width="200px" height="100px" />
+	</div>
 
 	<button type="button" onclick="send_data(1);">Trigger Touchpad</button>
 	<button type="button" onclick="send_data(0);">Trigger Shopping</button>
@@ -16,7 +26,40 @@
 
 	function send_data(trigger) {
 		ws.send("s_event," + trigger);
+		// s_event,1 << touchpad
+		// s_event,0 << shopping
 	}
+
+	function send_productState(state) {
+		ws.send("s_state," + state);
+	}
+
+	// function change_image(product){
+	// 	if(product == 1){
+	// 		$(this).attr('src','hover_dress.png');
+	// 	}else if(product == 2){
+	// 		$(this).attr('src','hover_shoe.png');
+	// 	}
+	// }
+
+	$("#cloth").hover(function() {
+		$(this).attr('src','hover_dress.png');
+	}, function() {
+  		$(this).attr('src', 'dress.png');
+	});
+
+	$("#shoe").hover(function() {
+		$(this).attr('src','hover_shoe.png');
+	}, function() {
+  		$(this).attr('src', 'shoe.png');
+	});
+
+	$("img").hover(function() {
+		var id = $(this).data("id");
+		console.log(id);
+		send_productState(id);
+		// change_image(id);
+	});
 
 	</script>
 </body>
