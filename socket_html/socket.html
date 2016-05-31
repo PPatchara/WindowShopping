@@ -9,11 +9,11 @@
 	<h1>Hello World</h1>
 
 	<div>
-		<img data-id="0" src="model.png" class="model" width="300px" height="900px" />
-		<img data-id="0" src="box.png" class="box" width="220px" height="120px" />
+		<img src="model.png" class="model" width="300px" height="900px" />
+		<img src="box.png" class="box" width="220px" height="120px" />
 
-		<img data-id="1" id="cloth" src="dress.png" class="cloth" width="500px" height="550px" />
-		<img data-id="2" id="shoe" src="shoe.png" class="shoe" width="200px" height="100px" />
+		<img data-id="1" id="cloth" class="object cloth" data-in="hover_dress.png" data-out="dress.png" src="dress.png" width="500px" height="550px" />
+		<img data-id="2" id="shoe" class="object shoe" data-in="hover_shoe.png"  data-out="shoe.png" src="shoe.png" width="200px" height="100px" />
 	</div>
 
 	<button type="button" onclick="send_data(1);">Trigger Touchpad</button>
@@ -42,23 +42,26 @@
 	// 	}
 	// }
 
-	$("#cloth").hover(function() {
-		$(this).attr('src','hover_dress.png');
-	}, function() {
-  		$(this).attr('src', 'dress.png');
-	});
+	// $("#cloth").hover(function() {
+	// 	$(this).attr('src',$(this)'hover_dress.png');
+	// }, function() {
+ //  		$(this).attr('src', 'dress.png');
+	// });
 
-	$("#shoe").hover(function() {
-		$(this).attr('src','hover_shoe.png');
-	}, function() {
-  		$(this).attr('src', 'shoe.png');
-	});
+	// $("#shoe").hover(function() {
+	// 	$(this).attr('src','hover_shoe.png');
+	// }, function() {
+ //  		$(this).attr('src', 'shoe.png');
+	// });
 
-	$("img").hover(function() {
+	$("img.object").hover(function() {
+		$(this).attr('src',$(this).data('in'));
 		var id = $(this).data("id");
-		console.log(id);
+		console.log("in: "+id);
 		send_productState(id);
-		// change_image(id);
+	}, function() {
+		$(this).attr('src',$(this).data('out'));
+  		console.log("out");
 	});
 
 	</script>
