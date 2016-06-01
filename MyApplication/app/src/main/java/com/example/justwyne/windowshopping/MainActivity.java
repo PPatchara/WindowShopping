@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
@@ -83,6 +84,8 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
 
             }
+        }else {
+            Log.d("DEBUG", "Tapped");
         }
         return true;
     }

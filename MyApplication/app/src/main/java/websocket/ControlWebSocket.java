@@ -60,7 +60,6 @@ public class ControlWebSocket extends WebSocketClient {
     private void trigger_event(int trigger) {
         Intent intent;
 
-
         if( trigger == TOUCHPAD_TRIGGER ) {
             intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);

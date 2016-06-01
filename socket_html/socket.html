@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>Hello World</h1>
+	<h1>Welcome to Window Shop</h1>
 
 	<div>
 		<img src="model.png" class="model" width="300px" height="900px" />
@@ -15,23 +15,13 @@
 		<img data-id="1" id="cloth" class="object cloth" data-in="hover_dress.png" data-out="dress.png" src="dress.png" width="500px" height="550px" />
 		<img data-id="2" id="shoe" class="object shoe" data-in="hover_shoe.png"  data-out="shoe.png" src="shoe.png" width="200px" height="100px" />
 	</div>
-
-	<button type="button" onclick="send_data(1);">Trigger Touchpad</button>
-	<button type="button" onclick="send_data(0);">Trigger Shopping</button>
-	
 	
 	<script type="text/javascript">
 
 	var ws = new WebSocket("ws://localhost:8887/pos");
 
-	function send_data(trigger) {
-		ws.send("s_event," + trigger);
-		// s_event,1 << touchpad
-		// s_event,0 << shopping
-	}
-
-	function send_productState(state) {
-		ws.send("s_state," + state);
+	function send_productState(hover_state,state) {
+		ws.send("s_state," + hover_state + "," + state);
 	}
 
 	// function change_image(product){
@@ -54,13 +44,24 @@
  //  		$(this).attr('src', 'shoe.png');
 	// });
 
+	$(document).click(function(event) {
+		console.log("Tapped target: " + event.target.id);
+	});
+
 	$("img.object").hover(function() {
 		$(this).attr('src',$(this).data('in'));
 		var id = $(this).data("id");
-		console.log("in: "+id);
-		send_productState(id);
+		var hover_state = "in";
+
+		send_productState(hover_state,id);
+		console.log("in: "+ id);
+
 	}, function() {
 		$(this).attr('src',$(this).data('out'));
+		var id = $(this).data("id");
+		var hover_state = "out";
+		send_productState(hover_state,id);
+
   		console.log("out");
 	});
 
