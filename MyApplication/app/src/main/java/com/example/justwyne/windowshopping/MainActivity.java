@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
 
     private int oldX = 0;
     private int oldY = 0;
+    private int touchState = 0;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +57,21 @@ public class MainActivity extends Activity {
                 Log.d("DEBUG", "On touch (down)" + String.valueOf(current_x) + ", " + String.valueOf(current_y));
                 oldX = current_x;
                 oldY = current_y;
+
+                touchState = 1;
+
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d("DEBUG", "On touch (up)" + String.valueOf(current_x) + ", " + String.valueOf(current_y));
                 oldX = current_x;
                 oldY = current_y;
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 Log.d("DEBUG", "On touch (move)" + String.valueOf(current_x) + ", " + String.valueOf(current_y));
+
+                touchState = 0;
+
                 break;
         }
         if( webSocket != null && motionEvent.getAction() != MotionEvent.ACTION_DOWN && motionEvent.getAction() != MotionEvent.ACTION_UP) {
@@ -84,7 +93,18 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
 
             }
-        }else {
+        }if(webSocket != null && motionEvent.getAction() == MotionEvent.ACTION_UP && touchState == 1){
+            oldX = current_x;
+            oldY = current_y;
+
+            try {
+                String data = String.format("tap,%d,%d", oldX,oldY);
+                webSocket.send(data);
+            } catch(NotYetConnectedException e) {
+                Toast.makeText(this, "Disconnected!", Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+
+            }
             Log.d("DEBUG", "Tapped");
         }
         return true;

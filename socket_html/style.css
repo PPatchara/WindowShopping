@@ -13,6 +13,7 @@ div{
 	left:395px;
 	top:110px;
 	z-index: 1;
+	background-color: #000000;
 }
 .box{
 	position:absolute;
