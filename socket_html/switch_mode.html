@@ -14,7 +14,7 @@
 	<script type="text/javascript">
 
 	var ws = new WebSocket("ws://localhost:8887/pos");
-
+	console.log(ws);
 	function send_data(trigger) {
 		ws.send("s_event," + trigger);
 		// s_event,1 << touchpad

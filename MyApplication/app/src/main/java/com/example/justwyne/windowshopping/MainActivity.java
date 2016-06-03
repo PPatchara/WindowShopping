@@ -25,8 +25,6 @@ public class MainActivity extends Activity {
 
     private int oldX = 0;
     private int oldY = 0;
-    private int posX = 0;
-    private int posY = 0;
     private int touchState = 0;
 
 
