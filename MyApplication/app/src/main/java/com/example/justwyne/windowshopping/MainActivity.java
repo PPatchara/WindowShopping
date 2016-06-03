@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
 
     private int oldX = 0;
     private int oldY = 0;
+    private int posX = 0;
+    private int posY = 0;
     private int touchState = 0;
 
 
@@ -94,11 +96,9 @@ public class MainActivity extends Activity {
 
             }
         }if(webSocket != null && motionEvent.getAction() == MotionEvent.ACTION_UP && touchState == 1){
-            oldX = current_x;
-            oldY = current_y;
 
             try {
-                String data = String.format("tap,%d,%d", oldX,oldY);
+                String data = String.format("tap");
                 webSocket.send(data);
             } catch(NotYetConnectedException e) {
                 Toast.makeText(this, "Disconnected!", Toast.LENGTH_LONG).show();
