@@ -93,10 +93,10 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
 
             }
-        }if(webSocket != null && motionEvent.getAction() == MotionEvent.ACTION_UP && touchState == 1){
+        }else if(webSocket != null && motionEvent.getAction() == MotionEvent.ACTION_UP && touchState == 1){
 
             try {
-                String data = String.format("tap");
+                String data = String.format("tap,%d,%d", current_x,current_y);
                 webSocket.send(data);
             } catch(NotYetConnectedException e) {
                 Toast.makeText(this, "Disconnected!", Toast.LENGTH_LONG).show();
