@@ -3,6 +3,7 @@
 <head>
 	<title>Client | Socket TCP</title>
 	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.imagemapster.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -14,6 +15,14 @@
 
 		<img data-id="1" id="cloth" class="object cloth" data-in="hover_dress.png" data-out="dress.png" src="dress.png" width="500px" height="550px" />
 		<img data-id="2" id="shoe" class="object shoe" data-in="hover_shoe.png"  data-out="shoe.png" src="shoe.png" width="200px" height="100px" />
+
+		<img src="dress_cream.jpg" class="dressborder" usemap="#dressmap"/>
+
+		<map name="dressmap">
+			<area shape="poly" 
+			coords="508,154,534,154,535,148,563,182,576,167,602,183,609,208,608,260,608,301,611,337,618,383,617,467,595,463,597,473,591,496,590,541,589,560,598,556,604,661,588,673,568,673,552,676,536,673,524,677,511,670,492,675,471,672,458,676,442,672,432,674,412,672,397,668,385,663,392,632,398,567,401,535,428,547,435,543,432,517,429,479,419,462,418,452,415,447,387,451,387,338,392,209,398,178,399,167,409,156,419,148,437,147,417,206,414,227,447,198,451,218,476,149,506,157,498,189,502,248,513,193,506,156" 
+			alt="cream_dress">
+		</map>
 	</div>
 	
 	<script type="text/javascript">
