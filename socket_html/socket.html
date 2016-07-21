@@ -4,28 +4,172 @@
 	<title>Client | Socket TCP</title>
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="jquery.imagemapster.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<h1>Welcome to Window Shop</h1>
+<!-- 	<h1>Welcome to Window Shop</h1> -->
 
-	<div>
-		<img src="model.png" class="model" width="300px" height="900px" />
-		<img src="box.png" class="box" width="220px" height="120px" />
+<!-- 	<div> -->
+		<!-- <img src="images/model.png" class="model" width="300px" height="900px" />
+		<img src="images/box.png" class="box" width="220px" height="120px" />
 
-		<img data-id="1" id="cloth" class="object cloth" data-in="hover_dress.png" data-out="dress.png" src="dress.png" width="500px" height="550px" />
-		<img data-id="2" id="shoe" class="object shoe" data-in="hover_shoe.png"  data-out="shoe.png" src="shoe.png" width="200px" height="100px" />
+		<img data-id="1" id="cloth" class="object cloth" data-in="images/hover_dress.png" data-out="images/dress.png" src="dress.png" width="500px" height="550px" />
+		<img data-id="2" id="shoe" class="object shoe" data-in="images/hover_shoe.png"  data-out="images/shoe.png" src="shoe.png" width="200px" height="100px" /> -->
 
-		<img src="dress_cream.jpg" class="dressborder" usemap="#dressmap"/>
 
-		<map name="dressmap">
-			<area shape="poly" 
-			coords="508,154,534,154,535,148,563,182,576,167,602,183,609,208,608,260,608,301,611,337,618,383,617,467,595,463,597,473,591,496,590,541,589,560,598,556,604,661,588,673,568,673,552,676,536,673,524,677,511,670,492,675,471,672,458,676,442,672,432,674,412,672,397,668,385,663,392,632,398,567,401,535,428,547,435,543,432,517,429,479,419,462,418,452,415,447,387,451,387,338,392,209,398,178,399,167,409,156,419,148,437,147,417,206,414,227,447,198,451,218,476,149,506,157,498,189,502,248,513,193,506,156" 
-			alt="cream_dress">
-		</map>
+<!-- 		<img src="images/dress_cream.jpg" width="100%" height="100%" border="0" alt="" usemap="#shapes_Map">
+		<map name="shapes_Map">
+    		<area shape="poly" coords="506,155,532,156,545,147,561,161,600,179,607,189,610,209,608,272,606,308,615,351,619,416,617,467,598,463,596,482,590,499,589,558,597,556,600,556,604,666,600,665,589,675,575,676,566,674,551,677,539,673,523,677,511,672,488,678,473,672,461,677,444,673,429,678,418,673,395,671,388,667,403,534,431,547,435,543,434,539,425,526,430,524,431,499,427,481,419,465,415,450,395,451,388,453,385,451,387,420,385,367,389,289,391,281,392,221,391,212,395,194,398,172,401,164,403,161,417,151,429,147,446,145,456,142,506,155,504,169,499,195,502,250,509,216,513,192,507,156" 
+    		href="#">
+
+    		<area shape="poly" coords="493,867,506,890,505,898,497,908,492,919,492,953,487,952,488,938,486,954,478,968,449,973,437,971,435,969,439,957,443,947,461,948,476,947,484,943,487,920,491,906,493,868" 
+    		href="#">
+
+    		<area shape="poly" coords="516,891,508,930,504,939,499,948,503,966,514,971,529,970,546,964,549,954,549,939,550,927,545,944,541,949,518,950,507,944,509,927" 
+    		href="#">
+		</map> -->
+<!-- 	</div> -->
+
+	<div class="container">
+		<div id="product-model" class="row padding-l-50 padding-r-50">
+			<div class="col-md-8 padding-t-50">
+				<img src="images/dress_cream_shoe_oldrose.jpg" width="100%" height="100%" border="0" alt="" usemap="#shapes_Map2">
+				<map name="shapes_Map2">
+		    		<area shape="poly" coords="506,155,532,156,545,147,561,161,600,179,607,189,610,209,608,272,606,308,615,351,619,416,617,467,598,463,596,482,590,499,589,558,597,556,600,556,604,666,600,665,589,675,575,676,566,674,551,677,539,673,523,677,511,672,488,678,473,672,461,677,444,673,429,678,418,673,395,671,388,667,403,534,431,547,435,543,434,539,425,526,430,524,431,499,427,481,419,465,415,450,395,451,388,453,385,451,387,420,385,367,389,289,391,281,392,221,391,212,395,194,398,172,401,164,403,161,417,151,429,147,446,145,456,142,506,155,504,169,499,195,502,250,509,216,513,192,507,156" 
+		    		href="#">
+
+		    		<area shape="poly" coords="493,867,506,890,505,898,497,908,492,919,492,953,487,952,488,938,486,954,478,968,449,973,437,971,435,969,439,957,443,947,461,948,476,947,484,943,487,920,491,906,493,868" 
+		    		href="#">
+
+		    		<area shape="poly" coords="516,891,508,930,504,939,499,948,503,966,514,971,529,970,546,964,549,954,549,939,550,927,545,944,541,949,518,950,507,944,509,927" 
+		    		href="#">
+				</map>
+			</div>
+			<div id="product-details" class="col-md-4 padding-t-20" >
+				<div>
+					<h3>Lace Shift Dress</h3>
+					<h4>1,229 THB</h4>
+					<div class="padding-t-20 padding-b-10">
+						This shift dress features an all-over floral embroidery covering to display a dramatic sophistication while keeping it elegant and chic from brunch to cocktails.
+
+						<ul class="padding-t-20">
+						  <li>Nylon blend</li>
+						  <li>Round neckline</li>
+						  <li>Long sleeves</li>
+						  <li>Front button closure</li>
+						  <li>A-line silhouette</li>
+						  <li>Regular fit</li>
+						  <li>Inner lining</li>
+						</ul>
+					</div>
+					
+					<h5>Color</h5>
+					<div class="padding-b-10" role="group" name="color">
+					  <button type="button" class="btn btn-translucent btn-circle white-color"></button>
+					  <button type="button" class="btn btn-translucent btn-circle cream-color"></button>
+					  <button type="button" class="btn btn-translucent btn-circle pink-color"></button>
+					</div>
+
+					<h5>Size</h5>
+					<div class="padding-b-10" role="group" name="size">
+					  <button type="button" class="btn btn-default" value="XS">XS</button>
+					  <button type="button" class="btn btn-default" value="S">S</button>
+					  <button type="button" class="btn btn-default" value="M">M</button>
+					  <button type="button" class="btn btn-default" value="L">L</button>
+					</div>
+
+					<h5>Quantity</h5>
+					<div class="dropdown padding-b-20">
+						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    1
+					    	<span class="caret"></span>
+					  	</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						  	<li><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn-primary">ADD TO CART</button>
+				</div>
+				<div>
+					<h3>Handjive High Heels</h3>
+					<h4>2,200 THB</h4>
+					<div class="padding-t-20 padding-b-10">
+						Adorn your style of the day with the sleek heels which are crafted from suede leather into almond toecap and complete the high end touch through the man made insole for comfortable wear.
+
+						<ul class="padding-t-20">
+						  <li>Genuine leather upper</li>
+						  <li>Almond toecap</li>
+						  <li>Balance man made</li>
+						  <li>Genuine leather inner</li>
+						  <li>Rubber outsole</li>
+						  <li>Fit trues to size</li>
+						  <li>Heel heights 8.5 cm / 3.5"</li>
+						</ul>
+					</div>
+					
+					<h5>Color</h5>
+					<div class="padding-b-10" role="group" name="color">
+						<button type="button" class="btn btn-translucent btn-circle taupe-color"></button>
+						<button type="button" class="btn btn-translucent btn-circle oldrose-color"></button>
+					</div>
+
+					<h5>Size : International US</h5>
+					<div class="padding-b-10" role="group" name="size">
+						<button type="button" class="btn btn-default margin-b-20" value="5">5</button>
+						<button type="button" class="btn btn-default" value="5.5">5.5</button>
+						<button type="button" class="btn btn-default" value="6">6</button>
+						<button type="button" class="btn btn-default" value="6.5">6.5</button>
+						<button type="button" class="btn btn-default" value="7">7</button>
+						<button type="button" class="btn btn-default" value="7.5">7.5</button>
+						<button type="button" class="btn btn-default" value="8">8</button>
+						<button type="button" class="btn btn-default" value="8.5">8.5</button>
+						<button type="button" class="btn btn-default" value="9">9</button>
+						<button type="button" class="btn btn-default" value="9.5">9.5</button>
+						<button type="button" class="btn btn-default" value="10">10</button>
+					</div>
+
+					<h5>Quantity</h5>
+					<div class="dropdown padding-b-20">
+						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    1
+					    	<span class="caret"></span>
+					  	</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						  	<li><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						</ul>
+					</div>
+					<button type="button" class="btn btn-primary">ADD TO CART</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	<script type="text/javascript">
+
+	$(document).ready(function() {
+	    $('img').mapster({
+	        fillOpacity: 0,
+	        fillColor: "FFFFFF",
+	        strokeColor: "000000",
+	        stroke: true,
+	        strokeWidth: 2,
+	        isSelectable: true,
+	        render_highlight: {
+	            strokeWidth: 3
+	        },
+	    });
+
+	});
 
 	var ws = new WebSocket("ws://localhost:8887/pos");
 
