@@ -27,6 +27,12 @@ div{
 	top:717px;
 	z-index: 1;
 }
+.padding-l-30{
+	padding-left: 30px;
+}
+.padding-r-30{
+	padding-right: 30px;
+}
 .padding-l-50{
 	padding-left: 50px;
 }
@@ -38,6 +44,9 @@ div{
 }
 .padding-t-20{
 	padding-top: 20px;
+}
+.padding-t-30{
+	padding-top: 30px;
 }
 .padding-t-50{
 	padding-top: 50px;

@@ -24,47 +24,47 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        Log.d("Intent", "Details");
-
-        itemColor = new ArrayList<>();
-        itemSize = new ArrayList<>();
-        itemQuantity = new ArrayList<>();
-        itemDetails = new ArrayList<>();
-
-        itemColor.add(R.drawable.fresh_white);
-        itemColor.add(R.drawable.black);
-        itemColor.add(R.drawable.lemon_souffle);
-
-        itemSize.add("XS");
-        itemSize.add("S");
-        itemSize.add("M");
-        itemSize.add("L");
-        itemSize.add("XL");
-
-        itemQuantity.add(3);
-        itemQuantity.add(5);
-        itemQuantity.add(10);
-        itemQuantity.add(20);
-        itemQuantity.add(100);
-
-        itemDetails.add(itemColor);
-        itemDetails.add(itemSize);
-        itemDetails.add(itemQuantity);
-
-        testImage = (ImageView) findViewById(R.id.testImage);
-
-        for(int i = 0;i < itemColor.size();i++){
-                if(itemColor.get(i) == R.drawable.fresh_white){
-                    System.out.println("a");
-                    testImage.setImageResource(R.drawable.fresh_white);
-                }if(itemColor.get(i) == R.drawable.black){
-                    System.out.println("b");
-                    testImage.setImageResource(R.drawable.black);
-                }else if(itemColor.get(i) == R.drawable.lemon_souffle){
-                    System.out.println("c");
-                    testImage.setImageResource(R.drawable.lemon_souffle);
-                }
-        }
+//        Log.d("Intent", "Details");
+//
+//        itemColor = new ArrayList<>();
+//        itemSize = new ArrayList<>();
+//        itemQuantity = new ArrayList<>();
+//        itemDetails = new ArrayList<>();
+//
+//        itemColor.add(R.drawable.fresh_white);
+//        itemColor.add(R.drawable.black);
+//        itemColor.add(R.drawable.lemon_souffle);
+//
+//        itemSize.add("XS");
+//        itemSize.add("S");
+//        itemSize.add("M");
+//        itemSize.add("L");
+//        itemSize.add("XL");
+//
+//        itemQuantity.add(3);
+//        itemQuantity.add(5);
+//        itemQuantity.add(10);
+//        itemQuantity.add(20);
+//        itemQuantity.add(100);
+//
+//        itemDetails.add(itemColor);
+//        itemDetails.add(itemSize);
+//        itemDetails.add(itemQuantity);
+//
+//        testImage = (ImageView) findViewById(R.id.testImage);
+//
+//        for(int i = 0;i < itemColor.size();i++){
+//                if(itemColor.get(i) == R.drawable.fresh_white){
+//                    System.out.println("a");
+//                    testImage.setImageResource(R.drawable.fresh_white);
+//                }if(itemColor.get(i) == R.drawable.black){
+//                    System.out.println("b");
+//                    testImage.setImageResource(R.drawable.black);
+//                }else if(itemColor.get(i) == R.drawable.lemon_souffle){
+//                    System.out.println("c");
+//                    testImage.setImageResource(R.drawable.lemon_souffle);
+//                }
+//        }
 
 //        for(Object object: itemDetails){
 //            if(object instanceof Integer){

@@ -19,7 +19,7 @@ import websocket.ControlWebSocket;
 public class MainActivity extends Activity {
     private static final int REQ_CODE = 001;
 
-    private String location = "ws://172.20.10.3:8887";
+    private String location = "ws://172.20.10.2:8887";
     private ControlWebSocket webSocket;
     private URI uri;
 

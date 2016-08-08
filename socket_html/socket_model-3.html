@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Client | Socket TCP</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.imagemapster.min.js"></script>
+	<script type="text/javascript" src="js/handlebars-v4.0.5.js"></script>
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+
+<!-- 		<img src="images/dress_cream.jpg" width="100%" height="100%" border="0" alt="" usemap="#shapes_Map">
+		<map name="shapes_Map">
+    		<area shape="poly" coords="506,155,532,156,545,147,561,161,600,179,607,189,610,209,608,272,606,308,615,351,619,416,617,467,598,463,596,482,590,499,589,558,597,556,600,556,604,666,600,665,589,675,575,676,566,674,551,677,539,673,523,677,511,672,488,678,473,672,461,677,444,673,429,678,418,673,395,671,388,667,403,534,431,547,435,543,434,539,425,526,430,524,431,499,427,481,419,465,415,450,395,451,388,453,385,451,387,420,385,367,389,289,391,281,392,221,391,212,395,194,398,172,401,164,403,161,417,151,429,147,446,145,456,142,506,155,504,169,499,195,502,250,509,216,513,192,507,156" 
+    		href="#">
+
+    		<area shape="poly" coords="493,867,506,890,505,898,497,908,492,919,492,953,487,952,488,938,486,954,478,968,449,973,437,971,435,969,439,957,443,947,461,948,476,947,484,943,487,920,491,906,493,868" 
+    		href="#">
+
+    		<area shape="poly" coords="516,891,508,930,504,939,499,948,503,966,514,971,529,970,546,964,549,954,549,939,550,927,545,944,541,949,518,950,507,944,509,927" 
+    		href="#">
+		</map> -->
+<!-- 	</div> -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-12 margin-t-20">
+				<img src="images/model-3/dress_white_shoe_taupe.jpg" width="100%" height="100%" align="middle" border="0" alt="" usemap="#product_map" id="model">
+				<map name="product_map">
+		    		<area shape="poly" group="dress" coords="506,155,532,156,545,147,561,161,600,179,607,189,610,209,608,272,606,308,615,351,619,416,617,467,598,463,596,482,590,499,589,558,597,556,600,556,604,666,600,665,589,675,575,676,566,674,551,677,539,673,523,677,511,672,488,678,473,672,461,677,444,673,429,678,418,673,395,671,388,667,403,534,431,547,435,543,434,539,425,526,430,524,431,499,427,481,419,465,415,450,395,451,388,453,385,451,387,420,385,367,389,289,391,281,392,221,391,212,395,194,398,172,401,164,403,161,417,151,429,147,446,145,456,142,506,155,504,169,499,195,502,250,509,216,513,192,507,156" 
+		    		href="#">
+
+		    		<area shape="poly" group="shoe" coords="493,867,506,890,505,898,497,908,492,919,492,953,487,952,488,938,486,954,478,968,449,973,437,971,435,969,439,957,443,947,461,948,476,947,484,943,487,920,491,906,493,868" 
+		    		href="#">
+
+		    		<area shape="poly" group="shoe" coords="516,891,508,930,504,939,499,948,503,966,514,971,529,970,546,964,549,954,549,939,550,927,545,944,541,949,518,950,507,944,509,927" 
+		    		href="#">
+				</map>
+			</div>
+		</div>
+	</div>
+
+	<div id="tooltips-dress" style="display: none;">
+		<h4>Lace Shift Dress</h4>
+		<h4 class="margin-b-10">1,229 THB</h4>
+		<button type="button" class="btn btn-translucent btn-circle white-color" onclick="changeImage('dress_white_shoe_taupe.jpg', this);"></button>
+	  	<button type="button" class="btn btn-translucent btn-circle cream-color" onclick="changeImage('dress_cream_shoe_taupe.jpg', this);"></button>
+	  	<button type="button" class="btn btn-translucent btn-circle pink-color" onclick="changeImage('dress_pink_shoe_taupe.jpg', this);"></button>
+	  	<button type="button" class="btn btn-primary margin-t-10">ADD TO CART</button>
+	</div>
+
+	<div id="tooltips-shoe" style="display: none;">
+		<h4>Handjive High Heels</h4>
+		<h4 class="margin-b-10">2,200 THB</h4>
+		<button type="button" class="btn btn-translucent btn-circle taupe-color" onclick="changeImage('dress_white_shoe_taupe.jpg', this);"></button>
+		<button type="button" class="btn btn-translucent btn-circle oldrose-color" onclick="changeImage('dress_white_shoe_oldrose.jpg', this);"></button>
+		<button type="button" class="btn btn-primary margin-t-10">ADD TO CART</button>
+	</div>
+	
+	<script type="text/javascript">
+
+		function changeImage(image, button) {
+			console.log(image);
+
+			$(".mapster_el").attr('src', 'images/model-3/' + image);
+
+			$(".mapster_tooltip button").removeClass('btn-clicked');
+			$(button).addClass('btn-clicked');
+		}
+
+		// function currentSelected() {
+		// 	$("#tooltips-dress")
+		// }
+
+		$(document).ready(function() {
+		    $('img').mapster({
+		    	showToolTip: true,
+		        fillOpacity: 0,
+		        fillColor: "FFFFFF",
+		        strokeColor: "000000",
+		        stroke: true,
+		        mapKey: "group",
+		        strokeWidth: 2,
+		        // staticState: true,
+		        isSelectable: true,
+		        render_highlight: {
+		            strokeWidth: 3
+		        },
+		        toolTipClose: ['toolTip-click'],
+		        areas: [
+		        	{
+		        		key: 'dress',
+		        		stroke: true,
+		        		toolTip: $("#tooltips-dress").html()
+		        	},
+		        	{
+		        		key: 'shoe',
+		        		stroke: true,
+		        		toolTip: $("#tooltips-shoe").html()
+		        	}
+		        ]
+		    });
+
+		    $('')
+
+		    var ws = new WebSocket("ws://localhost:8887/pos");
+
+			function send_productState(hover_state, state) {
+				ws.send("s_state," + hover_state + "," + state);
+			}
+
+			$(document).click(function(event) {
+				console.log("Tapped target: " + event.target.id);
+			});
+
+			$("img.object").hover(function() {  //edit this
+				$(this).attr('src',$(this).data('in'));
+				var id = $(this).data("id");
+				var hover_state = "in";
+
+				send_productState(hover_state,id);
+				console.log("in: "+ id);
+
+			}, function() {
+				$(this).attr('src',$(this).data('out'));
+				var id = $(this).data("id");
+				var hover_state = "out";
+				send_productState(hover_state,id);
+
+		  		console.log("out");
+			});
+
+		});
+
+	</script>
+</body>
+</html>

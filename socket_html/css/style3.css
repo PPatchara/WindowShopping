@@ -1,0 +1,157 @@
+body{
+	font-size: 20px;
+}
+div{
+	position: relative;
+}
+hr{
+	border-top: 1px solid #c0c0c0;
+}
+.model{
+	position: absolute;
+    left: 500px;
+    top: 30px;
+    z-index: 0;
+}
+
+.cloth{
+	position:absolute;
+	left:395px;
+	top:110px;
+	z-index: 1;
+/*	background-color: #000000;*/
+}
+.box{
+	position:absolute;
+	left:755px;
+	top:805px;
+	z-index: -1;
+}
+.shoe{
+	position:absolute;
+	left:765px;
+	top:717px;
+	z-index: 1;
+}
+.padding-l-10{
+	padding-left: 10px;
+}
+.padding-r-10{
+	padding-right: 10px;
+}
+.padding-l-30{
+	padding-left: 30px;
+}
+.padding-r-30{
+	padding-right: 30px;
+}
+.padding-l-50{
+	padding-left: 50px;
+}
+.padding-r-50{
+	padding-right: 50px;
+}
+.padding-t-10{
+	padding-top: 10px;
+}
+.padding-t-20{
+	padding-top: 20px;
+}
+.padding-t-30{
+	padding-top: 30px;
+}
+.padding-t-50{
+	padding-top: 50px;
+}
+.padding-b-10{
+	padding-bottom: 10px;
+}
+.padding-b-20{
+	padding-bottom: 20px;
+}
+.margin-l-10{
+	margin-left: 10px;
+}
+.margin-r-10{
+	margin-right: 10px;
+}
+.margin-l-30{
+	margin-left: 30px;
+}
+.margin-r-30{
+	margin-right: 30px;
+}
+.margin-l-50{
+	margin-left: 50px;
+}
+.margin-r-50{
+	margin-right: 50px;
+}
+.margin-t-10{
+	margin-top: 10px;
+}
+.margin-t-20{
+	margin-top: 20px;
+}
+.margin-t-30{
+	margin-top: 30px;
+}
+.margin-t-50{
+	margin-top: 50px;
+}
+.margin-b-10{
+	margin-bottom: 10px;
+}
+.margin-b-20{
+	margin-bottom: 20px;
+}
+.btn-circle{
+	border-radius: 20px;
+	padding: 20px;
+}
+.btn-translucent{
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-translucent:focus,
+.btn-translucent.focus{
+  color: #333;
+  border-color: #212121;
+}
+.btn-translucent:hover{
+  color: #333;
+  border-color: #212121;
+}
+.btn-clicked {
+	border: 2px solid #212121;
+}
+.dropdown-menu{
+	font-size: 24px;
+}
+.white-color{
+	background-color: #ffffff;
+}
+.cream-color{
+	background-color: #f5eedc;
+}
+.pink-color{
+	background-color: #f9dbe7;
+}
+.oldrose-color{
+	background-color: #e79679;
+}
+.taupe-color{
+	background-color: #d1b296;
+}
+.img-responsive{
+	max-width: 100%;
+	height: auto;
+}
+.details-box{
+	background-color: #e0e0e0;
+	border-radius: 20px;
+	-webkit-box-shadow: 10px 10px 15px 0px rgba(241,241,241,1);
+	-moz-box-shadow: 10px 10px 15px 0px rgba(241,241,241,1);
+	box-shadow: 10px 10px 15px 0px rgba(241,241,241,1);
+}
+
