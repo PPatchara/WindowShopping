@@ -1,11 +1,12 @@
 body{
 	font-size: 20px;
+	color: #000000;
 }
 div{
 	position: relative;
 }
 hr{
-	border-top: 1px solid #c0c0c0;
+	border-top: 1px solid #C0C0C0;
 }
 .model{
 	position: absolute;
@@ -110,8 +111,8 @@ hr{
 	padding: 20px;
 }
 .btn-translucent{
-  background-color: #fff;
-  border-color: #ccc;
+  background-color: #FFF;
+  border-color: #CCC;
 }
 .btn-translucent:focus,
 .btn-translucent.focus{
@@ -128,27 +129,27 @@ hr{
 .dropdown-menu{
 	font-size: 24px;
 }
-.white-color{
-	background-color: #ffffff;
+.snow-color{
+	background-color: #FFFAFA;
 }
-.cream-color{
-	background-color: #f5eedc;
+.ivory-color{
+	background-color: #FFF8DC;
 }
 .pink-color{
-	background-color: #f9dbe7;
+	background-color: #F9DBE7;
 }
 .oldrose-color{
-	background-color: #e79679;
+	background-color: #E79679;
 }
 .taupe-color{
-	background-color: #d1b296;
+	background-color: #D1B296;
 }
 .img-responsive{
 	max-width: 100%;
 	height: auto;
 }
 .details-box{
-	background-color: #e0e0e0;
+	background-color: #E0E0E0;
 	border-radius: 20px;
 	-webkit-box-shadow: 10px 10px 15px 0px rgba(241,241,241,1);
 	-moz-box-shadow: 10px 10px 15px 0px rgba(241,241,241,1);

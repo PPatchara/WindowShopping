@@ -12,8 +12,8 @@
 		<h1>Control Panel</h1>
 		<div class="row" style="margin-top:50px;">
 			<div class="col-xs-12 col-md-12">
-				<button type="button" class="btn btn-lg btn-primary" onclick="send_data(1);">Trigger Touchpad</button>
-				<button type="button" class="btn btn-lg btn-primary" onclick="send_data(0);">Trigger Shopping</button>
+				<button type="button" class="btn btn-lg btn-primary" onclick="send_data(0);">Trigger Touchpad</button>
+				<button type="button" class="btn btn-lg btn-primary" onclick="send_data(1);">Trigger Shopping</button>
 			</div>
 		</div>	
 	</div>
@@ -22,12 +22,12 @@
 	
 	<script type="text/javascript">
 
-	var ws = new WebSocket("ws://172.20.10.2:8887/pos");
+	var ws = new WebSocket("ws://10.50.8.21:8887/pos");
 	console.log(ws);
 	function send_data(trigger) {
 		ws.send("s_event," + trigger);
-		// s_event,1 << touchpad
-		// s_event,0 << shopping
+		// s_event,0 << touchpad
+		// s_event,1 << shopping
 	}
 	</script>
 </body>

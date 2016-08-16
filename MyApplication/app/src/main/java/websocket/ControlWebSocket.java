@@ -17,8 +17,8 @@ import java.net.URI;
  */
 public class ControlWebSocket extends WebSocketClient {
 
-    int TOUCHPAD_TRIGGER = 1;
-    int SHOPPING_TRIGGER = 0;
+    int TOUCHPAD_TRIGGER = 0;
+    int SHOPPING_TRIGGER = 1;
 
     Context context;
 

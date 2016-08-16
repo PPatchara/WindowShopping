@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">WindowShopping</string>
-    <string name="product_name">poplin ruffle top</string>
-    <string name="buy_btn">Add to Bag</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_color">COLOR</string>
+    <string name="product_description">DESCRIPTION</string>
+    <string name="product_detail">DETAILS</string>
+    <string name="btn_addCart">Add to Cart</string>
+    <string name="btn_viewCart">View Cart</string>
 </resources>

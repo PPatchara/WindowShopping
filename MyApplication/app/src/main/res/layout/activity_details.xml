@@ -8,95 +8,124 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/colorWhite"
+    android:background="@color/white"
     tools:context="com.example.justwyne.windowshopping.DetailsActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_margin="4dp">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvProductName"
-                android:text="@string/product_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:layout_marginBottom="24dp"/>
+                android:orientation="vertical"
+                android:layout_margin="4dp">
 
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvColor"
-                    android:text="Color : "
+                <Button
+                    android:id="@+id/btnViewCart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:layout_gravity="right"
+                    android:text="@string/btn_viewCart"/>
+
+                <TextView
+                    android:id="@+id/tvProductName"
+                    android:text="@string/product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textSize="18dp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:text="$0.00"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"/>
+
+                <ImageView
+                    android:id="@+id/ivImage"
+                    android:src="@drawable/dress_snow_crop"
+                    android:layout_width="match_parent"
+                    android:layout_height="400px"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:id="@+id/tvColorTitle"
+                    android:text="@string/product_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:layout_marginBottom="4dp"
                     android:layout_marginRight="8dp"/>
 
-                <TextView
-                    android:id="@+id/tvColorName"
-                    android:text="Black"
-                    android:layout_toRightOf="@id/tvColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:layout_marginBottom="4dp"/>
-
-                <RelativeLayout
-                    android:layout_below="@id/tvColor"
+                <LinearLayout
+                    android:id="@+id/colorLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="32dp">
 
-                    <ImageButton
-                        android:id="@+id/ibtnColor"
-                        android:src="@drawable/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#00000000"
-                        android:layout_marginRight="8dp"/>
+                </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/ibtnColor2"
-                        android:src="@drawable/lemon_souffle"
-                        android:layout_toRightOf="@id/ibtnColor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#00000000"/>
-                </RelativeLayout>
-            </RelativeLayout>
+                <Button
+                    android:id="@+id/btnAddToCart"
+                    android:text="@string/btn_addCart"
+                    android:layout_below="@id/colorLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/btnAddtoBag"
-                android:text="@string/buy_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"/>
+                <TextView
+                    android:id="@+id/tvDescriptionTitle"
+                    android:text="@string/product_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp"/>
 
-            <ImageView
-                android:id="@+id/testImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:text="This product doesn't have description."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/tvDetailTitle"
+                    android:text="@string/product_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="8dp"/>
+                <TextView
+                    android:id="@+id/tvProductDetail"
+                    android:text="This product doesn't have details."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"/>
+            </LinearLayout>
+
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
 
 
 

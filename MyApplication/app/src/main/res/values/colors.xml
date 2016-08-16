@@ -3,6 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorBlack">#000000</color>
-    <color name="colorWhite">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="cream">#f5eedc</color>
+    <color name="pink">#f9dbe7</color>
+    <color name="taupe">#d1b296</color>
+    <color name="oldrose">#e79679</color>
+
 </resources>
