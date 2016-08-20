@@ -22,10 +22,14 @@
 	
 	<script type="text/javascript">
 
-	var ws = new WebSocket("ws://10.50.8.21:8887/pos");
-	console.log(ws);
+	var ws = new WebSocket("ws://localhost:8887/pos");
+	
 	function send_data(trigger) {
-		ws.send("s_event," + trigger);
+		var trigger_json = {
+			"action": "trigger_mode",
+			"mode": trigger
+		};
+		ws.send(JSON.stringify(trigger_json));
 		// s_event,0 << touchpad
 		// s_event,1 << shopping
 	}

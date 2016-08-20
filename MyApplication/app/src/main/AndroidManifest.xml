@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailsActivity" />
-        <activity android:name=".CartActivity"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".ShippingAddressActivity"></activity>
     </application>
 
 </manifest>

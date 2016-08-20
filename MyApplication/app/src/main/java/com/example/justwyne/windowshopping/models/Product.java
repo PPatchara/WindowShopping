@@ -106,4 +106,13 @@ public class Product {
     public void setDetails(String details) {
         this.details = details;
     }
+
+    public Color getColorByName(String name) {
+        for (Color color : colorList) {
+            if( color.getName().equalsIgnoreCase(name)) {
+                return color;
+            }
+        }
+        return null;
+    }
 }

@@ -35,7 +35,7 @@
 
                 <TextView
                     android:id="@+id/tvProductName"
-                    android:text="@string/product_name"
+                    android:text="@string/title_pName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -62,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/tvColorTitle"
-                    android:text="@string/product_color"
+                    android:text="@string/title_pColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
@@ -87,11 +87,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginBottom="8dp"/>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#d3d3d3"
+                    android:layout_marginBottom="8dp" />
 
                 <TextView
                     android:id="@+id/tvDescriptionTitle"
-                    android:text="@string/product_description"
+                    android:text="@string/title_pDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
@@ -108,7 +114,7 @@
 
                 <TextView
                     android:id="@+id/tvDetailTitle"
-                    android:text="@string/product_detail"
+                    android:text="@string/title_pDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"

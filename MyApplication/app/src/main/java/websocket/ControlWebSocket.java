@@ -9,6 +9,8 @@ import com.example.justwyne.windowshopping.MainActivity;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.net.URI;
 
@@ -36,15 +38,25 @@ public class ControlWebSocket extends WebSocketClient {
     public void onMessage(String s) {
         Log.d("DEBUG", "onMessage " + s);
 
-        String[] stringList = s.split(",");
+        try {
+            JSONObject jsonObject = new JSONObject(s);
+            switchAction(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
-        if(stringList.length <= 1) return;
+    private void switchAction(JSONObject jsonObject) throws JSONException {
+        String action = jsonObject.getString("action");
+        switch (action) {
+            case "trigger_mode":
+                int trigger = jsonObject.getInt("mode");
+                trigger_event(jsonObject);
+                break;
 
-        Integer trigger = Integer.parseInt(stringList[1]);
-
-        if (trigger == null || !stringList[0].equalsIgnoreCase("s_event")) return ;
-
-        trigger_event(trigger.intValue());
+            case "current_product":
+                break;
+        }
     }
 
     @Override
@@ -58,14 +70,17 @@ public class ControlWebSocket extends WebSocketClient {
         e.printStackTrace();
     }
 
-    private void trigger_event(int trigger) {
+    private void trigger_event(JSONObject jsonObject) throws JSONException {
+        int trigger = jsonObject.getInt("mode");
         Intent intent;
 
         if( trigger == TOUCHPAD_TRIGGER ) {
             intent = new Intent(context, MainActivity.class);
             context.startActivity(intent);
         } else if( trigger == SHOPPING_TRIGGER ) {
+            JSONObject productObject = jsonObject.getJSONObject("product");
             intent = new Intent(context, DetailsActivity.class);
+            intent.putExtra("product", productObject.toString());
             context.startActivity(intent);
         }
     }

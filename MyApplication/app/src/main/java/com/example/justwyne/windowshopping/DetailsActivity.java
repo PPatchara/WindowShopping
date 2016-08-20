@@ -1,8 +1,9 @@
 package com.example.justwyne.windowshopping;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,11 @@ import android.widget.Toast;
 import com.example.justwyne.windowshopping.models.Product;
 import com.example.justwyne.windowshopping.models.ProductList;
 
-public class DetailsActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class DetailsActivity extends BaseActivity {
+    private static final int REQ_CODE = 002;
 
     private ProductList productList;
     private Product product;
@@ -27,9 +32,8 @@ public class DetailsActivity extends AppCompatActivity {
     private LinearLayout.LayoutParams params;
     private Button btnColor;
     private Button btnAddToCart;
-
-    public DetailsActivity() {
-    }
+    private Button btnViewCart;
+    private String currentColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,22 +41,38 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         Log.d("Intent", "Details");
-        setupView();
+        initInstances();
         setupData();
 
     }
 
-    private void setupView(){
+    private JSONObject getProduct() throws JSONException {
+        Intent intent = getIntent();
+        String json_raw = intent.getStringExtra("product");
+        return new JSONObject(json_raw);
+    }
+
+    private void initInstances(){
         name = (TextView) findViewById(R.id.tvProductName);
         details = (TextView) findViewById(R.id.tvProductDetail);
         price = (TextView) findViewById(R.id.tvPrice);
         description = (TextView) findViewById(R.id.tvDescription);
         image = (ImageView) findViewById(R.id.ivImage);
-        btnAddToCart = (Button) findViewById(R.id.btnAddToCart);
-        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+//        btnAddToCart = (Button) findViewById(R.id.btnAddToCart);
+//        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String dataMockup =
+//                        "{'id':'CD001','color':'snow','size':'S','quantity':'2'}";
+//                webSocket.send(dataMockup);
+//            }
+//        });
+
+        btnViewCart = (Button) findViewById(R.id.btnViewCart);
+        btnViewCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                sendIntent();
             }
         });
 
@@ -67,12 +87,24 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void renderProduct(){
-        product = productList.getProduct("CD001");
-        name.setText(product.getName());
-        details.setText(product.getDetails());
-        price.setText("$ " + product.getPrice());
-        description.setText(product.getDescription());
-        createColorChoices();
+        try {
+            JSONObject productObject = getProduct();
+            product = productList.getProduct(productObject.getString("product_id"));
+
+            name.setText(product.getName());
+            details.setText(product.getDetails());
+            price.setText("$ " + product.getPrice());
+
+            String imageName = product.getColorByName(productObject.getString("color")).getImageNameList().get(1);
+            int res = getResources().getIdentifier(imageName, "drawable", getPackageName());
+            image.setImageResource(res);
+
+            description.setText(product.getDescription());
+            createColorChoices();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void createColorChoices(){
@@ -87,7 +119,10 @@ public class DetailsActivity extends AppCompatActivity {
             // Give button an ID
             btnColor.setId(index+1);
             btnColor.setBackgroundColor(Color.parseColor(product.getColorList().get(index).getCode()));
+            btnColor.setText(product.getColorList().get(index).getName());
+            btnColor.setTextSize(0);
             params.setMargins(0, 0, 20, 0);
+            Log.d("btnColor ", btnColor.getText().toString() + btnColor.getId());
 
             // set the layoutParams on the button
             btnColor.setLayoutParams(params);
@@ -103,6 +138,7 @@ public class DetailsActivity extends AppCompatActivity {
                     String colorName = product.getColorList().get(btnIndex).getName().toString();
                     Toast.makeText(getApplicationContext(), "You choose " + colorName + " color.",
                             Toast.LENGTH_SHORT).show();
+                    Log.d("btnColorOnClick ", btnColor.getText().toString() + btnColor.getId());
 
                 }
             });
@@ -114,8 +150,11 @@ public class DetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void addToCart(){
-
+    private void sendIntent(){
+        Intent intent;
+        intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
     }
+
 
 }

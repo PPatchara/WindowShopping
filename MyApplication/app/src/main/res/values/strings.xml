@@ -1,9 +1,23 @@
 <resources>
     <string name="app_name">WindowShopping</string>
-    <string name="product_name">Product Name</string>
-    <string name="product_color">COLOR</string>
-    <string name="product_description">DESCRIPTION</string>
-    <string name="product_detail">DETAILS</string>
+    <string name="title_pName">Product Name</string>
+    <string name="title_pColor">COLOR</string>
+    <string name="title_pSize">SIZE</string>
+    <string name="title_pDescription">DESCRIPTION</string>
+    <string name="title_pDetails">DETAILS</string>
+    <string name="title_cart">MY CART</string>
+    <string name="title_subTotal">SUBTOTAL</string>
+    <string name="title_total">TOTAL</string>
+    <string name="title_shippingAddr">SHIPPING ADDRESS</string>
     <string name="btn_addCart">Add to Cart</string>
     <string name="btn_viewCart">View Cart</string>
+    <string name="et_fullname">FULLNAME</string>
+    <string name="et_address">ADDRESS</string>
+    <string name="et_city">CITY</string>
+    <string name="et_state">STATE</string>
+    <string name="et_postcode">POSTCODE</string>
+    <string name="et_phone">PHONE (optional)</string>
+    <string-array name="country">
+        <item>Australia</item>
+    </string-array>
 </resources>

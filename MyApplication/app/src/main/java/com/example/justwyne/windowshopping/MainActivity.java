@@ -4,24 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
-import org.java_websocket.WebSocketImpl;
-
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.channels.NotYetConnectedException;
 
-import websocket.ControlWebSocket;
-
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
     private static final int REQ_CODE = 001;
-
-    private String location = "ws://10.50.8.21:8887"; //change IP when connect internet
-    private ControlWebSocket webSocket;
-    private URI uri;
 
     private int oldX = 0;
     private int oldY = 0;
@@ -31,19 +20,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        WebSocketImpl.DEBUG = false;
-
-        try {
-            uri = new URI(location);
-            webSocket = new ControlWebSocket(this, uri);
-            Boolean bool = webSocket.connectBlocking();
-            Toast.makeText(this, "You are connected to RemoteServer: " + uri.getRawPath(), Toast.LENGTH_SHORT);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean onTouchEvent(MotionEvent motionEvent)
@@ -86,8 +62,8 @@ public class MainActivity extends Activity {
             Log.d("DEBUG", "On touch (delta)" + String.valueOf(deltaX) + ", " + String.valueOf(deltaY));
 
             try {
-                String data = String.format("pos,%d,%d", deltaX, deltaY);
-                webSocket.send(data);
+                String json_data = String.format("{\"action\": \"pos\", \"delta_x\": %d, \"delta_y\":%d}", deltaX, deltaY);
+                webSocket.send(json_data);
             } catch(NotYetConnectedException e) {
                 Toast.makeText(this, "Disconnected!", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
@@ -96,8 +72,8 @@ public class MainActivity extends Activity {
         }else if(webSocket != null && motionEvent.getAction() == MotionEvent.ACTION_UP && touchState == 1){
 
             try {
-                String data = String.format("tap,%d,%d", current_x,current_y);
-                webSocket.send(data);
+                String json_data = String.format("{\"action\": \"tap\", \"pos_x\": %d, \"pos_y\":%d}", current_x, current_y);
+                webSocket.send(json_data);
             } catch(NotYetConnectedException e) {
                 Toast.makeText(this, "Disconnected!", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
@@ -106,12 +82,6 @@ public class MainActivity extends Activity {
             Log.d("DEBUG", "Tapped");
         }
         return true;
-    }
-
-    public void trigger() {
-        Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-        startActivityForResult(intent, REQ_CODE);
-        Log.d("MainActivity", "Trigger");
     }
 
     @Override
@@ -124,12 +94,5 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         Log.d("Cycle", "onResume");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("Cycle", "onDestroy");
-        webSocket.close();
     }
 }
