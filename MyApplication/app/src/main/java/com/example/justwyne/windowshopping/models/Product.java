@@ -13,8 +13,11 @@ public class Product {
     private String name;
     private String description;
     private String details;
-    private String price;
+    private double price;
+    private String color;
+    private String size;
     private int quantity;
+    private int stock;
     private ArrayList<String> sizeList;
     private ArrayList<Color> colorList;
 
@@ -55,12 +58,28 @@ public class Product {
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public ArrayList<String> getSizeList() {
@@ -81,6 +100,14 @@ public class Product {
 
     public void addColor(Color color) {
         this.colorList.add(color);
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public int getQuantity() {

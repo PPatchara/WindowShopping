@@ -50,7 +50,7 @@ public class ControlWebSocket extends WebSocketClient {
         String action = jsonObject.getString("action");
         switch (action) {
             case "trigger_mode":
-                int trigger = jsonObject.getInt("mode");
+                Log.d("Test", "HelloWorld");
                 trigger_event(jsonObject);
                 break;
 

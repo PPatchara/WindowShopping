@@ -6,33 +6,7 @@ div{
 	position: relative;
 }
 hr{
-	border-top: 1px solid #C0C0C0;
-}
-.model{
-	position: absolute;
-    left: 500px;
-    top: 30px;
-    z-index: 0;
-}
-
-.cloth{
-	position:absolute;
-	left:395px;
-	top:110px;
-	z-index: 1;
-/*	background-color: #000000;*/
-}
-.box{
-	position:absolute;
-	left:755px;
-	top:805px;
-	z-index: -1;
-}
-.shoe{
-	position:absolute;
-	left:765px;
-	top:717px;
-	z-index: 1;
+	border-top: 2px solid #C0C0C0;
 }
 .padding-l-10{
 	padding-left: 10px;
@@ -106,9 +80,14 @@ hr{
 .margin-b-20{
 	margin-bottom: 20px;
 }
+.btn-xlg{
+  padding: 60px 20px;
+  font-size: 40px;
+  border-radius: 13px;
+}
 .btn-circle{
 	border-radius: 20px;
-	padding: 20px;
+	padding: 20px 20px; 
 }
 .btn-translucent{
   background-color: #FFF;
@@ -156,3 +135,36 @@ hr{
 	box-shadow: 10px 10px 15px 0px rgba(241,241,241,1);
 }
 
+/* Tooltip layout */
+.button-group {
+	padding-bottom: 20px;
+}
+.btn-prev {
+	padding-left: 0px;
+}
+.btn-next {
+	padding-right: 0px;
+}
+button[data-role=prev],
+button[data-role=next] {
+	height: 150px;
+	font-size: 25px;
+	border-radius: 0px;
+	top: 0px;
+}
+.tooltip-layout {
+	position: absolute;
+	max-width: 400px;
+	width: 400px;
+}
+.tooltip-layout .border {
+	border: 1px solid black;
+}
+.tooltip-layout-dress {
+	right: 300px;
+	bottom: 550px;
+}
+.tooltip-layout-heels {
+	right: 300px;
+	bottom: 100px;
+}

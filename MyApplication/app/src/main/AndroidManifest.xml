@@ -20,7 +20,11 @@
         </activity>
         <activity android:name=".DetailsActivity" />
         <activity android:name=".CartActivity" />
-        <activity android:name=".ShippingAddressActivity"></activity>
+        <activity android:name=".ShippingAddressActivity" />
+        <activity android:name=".ShippingMethodActivity" />
+        <activity android:name=".PaymentMethodActivity" />
+        <activity android:name=".ConfirmOrderActivity" />
+        <activity android:name=".OrderCompleteActivity"></activity>
     </application>
 
 </manifest>

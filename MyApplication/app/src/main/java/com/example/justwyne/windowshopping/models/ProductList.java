@@ -39,12 +39,13 @@ public class ProductList {
                 product.setSubcategory(productTmp.getString("subcategory"));
                 product.setId(productTmp.getString("id"));
                 product.setName(productTmp.getString("name"));
-                product.setPrice(productTmp.getString("price"));
-                product.setQuantity(productTmp.getInt("quantity"));
+                double price = Double.parseDouble(productTmp.getString("price"));
+                product.setPrice(price);
+                product.setStock(productTmp.getInt("stock"));
                 product.setDescription(productTmp.getString("description"));
                 product.setDetails(productTmp.getString("details"));
 
-                ArrayList<String> sizeList = extractSizes(productTmp.getJSONArray("size"));
+                ArrayList<String> sizeList = extractSizes(productTmp.getJSONArray("sizes"));
                 product.setSizeList(sizeList);
 
                 ArrayList<Color> colorList = extractColors(productTmp.getJSONArray("colors"));
