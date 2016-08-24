@@ -1,5 +1,7 @@
 package com.example.justwyne.windowshopping.models;
 
+import android.util.Log;
+
 /**
  * Created by Justwyne on 8/24/16 AD.
  */
@@ -51,11 +53,11 @@ public class ProductOrder {
         quantity += 1;
     }
 
-    public double getTotal() {
+    public double getSubtotal() {
         return quantity * product.getPrice();
     }
 
     public boolean equals(Product product,Color color,String size){
-        return this.product == product && this.color == color && this.size.equals(size);
+        return this.product.equals(product) && this.color.equals(color) && this.size.equals(size);
     }
 }

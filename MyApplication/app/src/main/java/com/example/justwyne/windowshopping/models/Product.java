@@ -142,4 +142,8 @@ public class Product {
         }
         return null;
     }
+
+    public String toString() {
+        return String.format("%4s %25s %f", id, name, price);
+    }
 }

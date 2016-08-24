@@ -16,9 +16,17 @@ import java.util.Scanner;
 public class ProductList {
 
     private ArrayList<Product> products;
+    private static ProductList instance;
 
-    public ProductList(){
+    private ProductList(){
         products = new ArrayList<>();
+    }
+
+    public static ProductList getInstance() {
+        if (instance == null) {
+            instance = new ProductList();
+        }
+        return instance;
     }
 
     public void loadData(InputStream inputStream){

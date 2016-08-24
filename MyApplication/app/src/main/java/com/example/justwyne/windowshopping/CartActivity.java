@@ -27,10 +27,12 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        Log.d("Intent", "Cart");
+//        Log.d("Intent", "Cart");
 //        cart = (Cart) getIntent().getSerializableExtra("cart");
         initInstances();
+//        Log.d("Cart", String.format("%s %s", cart.size(),cart.getTotal()));
 //        createProductOrder();
+        cart = Cart.getInstance();
     }
 
     private void initInstances(){

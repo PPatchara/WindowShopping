@@ -2,7 +2,6 @@ package com.example.justwyne.windowshopping;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -72,7 +71,7 @@ public class DetailsActivity extends BaseActivity {
         ivImage = (ImageView) findViewById(R.id.ivImage);
         tvColor = (TextView) findViewById(R.id.tvColorName);
         spinner = new Spinner(this);
-        cart = new Cart();
+        cart = Cart.getInstance();
         btnAddToCart = (Button) findViewById(R.id.btnAddToCart);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +84,12 @@ public class DetailsActivity extends BaseActivity {
                 * 5. Finish!
                 */
                 size = spinner.getSelectedItem().toString();
-                Log.d("Adding", String.format("%s %s %s", product.getName(),size,color.getName()));
+//                Log.d("Adding", String.format("%s %s %s", product.getName(),size,color.getName()));
                 cart.add(product,color,size);
+//                Log.d("Count", String.format("%s", cart.size()));
+
+                cart.summary();
+
             }
         });
 
@@ -94,7 +97,7 @@ public class DetailsActivity extends BaseActivity {
         btnViewCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendIntent();
+//                sendIntent();
             }
         });
 
@@ -107,7 +110,7 @@ public class DetailsActivity extends BaseActivity {
     }
 
     private void setupData(){
-        productList = new ProductList();
+        productList = ProductList.getInstance();
         productList.loadData(getResources().openRawResource(R.raw.product));
     }
 
@@ -115,17 +118,20 @@ public class DetailsActivity extends BaseActivity {
         try {
             JSONObject productObject = getProduct();
             product = productList.getProduct(productObject.getString("product_id"));
+            color = product.getColorByName(productObject.getString("color"));
 
             tvName.setText(product.getName());
             tvDetails.setText(product.getDetails());
             tvPrice.setText("$ " + product.getPrice());
 
-            String imageName = product.getColorByName(productObject.getString("color")).getImageNameList().get(1);
+            String imageName = color.getImageNameList().get(1);
             int res = getResources().getIdentifier(imageName, "drawable", getPackageName());
             ivImage.setImageResource(res);
 
+
             tvDescription.setText(product.getDescription());
-            tvColor.setText(product.getColorByName(productObject.getString("color")).getName());
+            tvColor.setText(color.getName());
+
             createColorChoices();
             createSizeChoices();
         } catch (JSONException e) {
@@ -153,21 +159,22 @@ public class DetailsActivity extends BaseActivity {
             // set the layoutParams on the button
             btnColor.setLayoutParams(paramsColor);
 
+
+
             final int btnIndex = index;
             // Set click listener for button
             btnColor.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    imageName = product.getColorList().get(btnIndex).getImageNameList().get(1);
-                    int res = getResources().getIdentifier(imageName, "drawable", getPackageName());
-                    ivImage.setImageResource(res);
+                imageName = product.getColorList().get(btnIndex).getImageNameList().get(1);
+                int res = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                ivImage.setImageResource(res);
 
-                    colorName = product.getColorList().get(btnIndex).getName().toString();
-                    color = product.getColorByName(colorName);
-                    tvColor.setText(colorName);
-                    sendProduct(product.getId().toString(),colorName);
+                colorName = product.getColorList().get(btnIndex).getName().toString();
+                color = product.getColorByName(colorName);
+                tvColor.setText(colorName);
+                sendProduct(product.getId().toString(),colorName);
                 }
             });
-
             //Add button to LinearLayout
             btnColorLayout.addView(btnColor);
             //Add button to LinearLayout defined in XML
@@ -186,6 +193,7 @@ public class DetailsActivity extends BaseActivity {
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
         spinner.setAdapter(spinnerArrayAdapter);
+        spinner.setSelection(0);
         spinner.setLayoutParams(paramsSize);
 
         sizeLayout.addView(spinner);
@@ -195,7 +203,7 @@ public class DetailsActivity extends BaseActivity {
     private void sendIntent(){
         Intent intent;
         intent = new Intent(this, CartActivity.class);
-//        intent.putExtra("cart", (Serializable) cart);
+//        intent.putExtra("cart", cart);
         startActivity(intent);
     }
 
