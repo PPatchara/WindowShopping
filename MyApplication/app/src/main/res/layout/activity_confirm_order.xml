@@ -42,12 +42,6 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:background="#d3d3d3"
-                android:layout_marginBottom="8dp" />
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +60,7 @@
                 <TextView
                     android:id="@+id/tvSubTotal"
                     android:layout_toRightOf="@id/tvSubTotalTitle"
-                    android:text="$00.00"
+                    android:text="$ 00.00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -89,7 +83,7 @@
                     android:id="@+id/tvShipping"
                     android:layout_toRightOf="@id/tvSubTotalTitle"
                     android:layout_below="@id/tvSubTotal"
-                    android:text="$00.00"
+                    android:text="$ 00.00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
@@ -125,7 +119,7 @@
                 <TextView
                     android:id="@+id/tvTotal"
                     android:layout_toRightOf="@id/tvTotalTitle"
-                    android:text="$00.00"
+                    android:text="$ 00.00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
