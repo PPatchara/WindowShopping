@@ -129,21 +129,27 @@
 		var ws = new WebSocket("ws://localhost:8887/pos");
 		ws.onmessage = function receiveData (current) {
 
-			var list = ['current_product'];
+			var list = ['current_product', 'forward_swipe', 'backward_swipe'];
 
 			var msgJSON = JSON.parse(current.data);
 
-			console.log(msgJSON);		
+			// if(list.indexOf(msgJSON['action']) == -1) {
+			// 	return;
+			// }
 
-			if(list.indexOf(msgJSON['action']) == -1) {
-				return;
+			if(msgJSON['action'] == 'current_product') {
+				var product_id = msgJSON["product_id"];
+				var color = msgJSON["color"];
+				
+				updateCurrentProduct(product_id, color);
+				updateActiveButton(product_id, color);
 			}
-
-			var product_id = msgJSON["product_id"];
-			var color = msgJSON["color"];
-			
-			updateCurrentProduct(product_id, color);
-			updateActiveButton(product_id, color);
+			else if(msgJSON['action'] == 'forward_swipe') {
+				changeState('next');
+			}
+			else if(msgJSON['action'] == 'backward_swipe') {
+				changeState('prev')
+			}
 		}
 
 		function currentSelected(button) {
@@ -213,6 +219,19 @@
 			}
 			updateActiveButton(id, $next.data('color'));
 		});
+
+		function changeState(role) {
+			var root = $('div.tooltip-layout:visible');
+			var group = root.data('group');
+			var id = root.data('id');
+			var $curr = root.find('button.btn-clicked');
+			if ( role == 'next') {
+				var $next = ($curr.next().length) ? $curr.next() : root.find('button.btn-circle').first();
+			} else {
+				var $next = ($curr.prev().length) ? $curr.prev() : root.find('button.btn-circle').last();
+			}
+			updateActiveButton(id, $next.data('color'));
+		}
 
 		function send_current_product(product_id, color) {
 			var data = JSON.stringify({

@@ -6,7 +6,7 @@
 			"id": "CD001",
 			"name": "Lace Shift Dress",
 			"price":  "39.50",
-			"size": ["XS","S","M","L"],
+			"sizes": ["XS","S","M","L"],
 			"colors": [
 				{
 					"name": "snow",
@@ -33,7 +33,7 @@
 			"id": "SH001",
 			"name": "Handjive High Heels",
 			"price": "45.00",
-			"size": ["5","5.5","6","6.5","7","7.5","8","8.5","9","9.5","10"],
+			"sizes": ["5","5.5","6","6.5","7","7.5","8","8.5","9","9.5","10"],
 			"colors": [
 				{
 					"name": "taupe",

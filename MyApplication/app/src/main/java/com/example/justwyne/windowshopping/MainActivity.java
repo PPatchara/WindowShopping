@@ -11,7 +11,7 @@ import java.nio.channels.NotYetConnectedException;
 
 public class MainActivity extends BaseActivity {
     private static final int REQ_CODE = 001;
-    public static final int MIN_SWIPE_TIME = 160;
+    public static final int MIN_SWIPE_TIME = 180;
 
     private int oldX = 0;
     private int oldY = 0;
@@ -53,14 +53,15 @@ public class MainActivity extends BaseActivity {
                 Log.d("DEBUG", "On touch (up)" + String.valueOf(current_x) + ", " + String.valueOf(current_y) + " : " + endTime);
 
                 if (endTime < MIN_SWIPE_TIME && touchState == 0) {
-                    if (initialX < finalX) {
-                        Log.d("On touch", "Left to Right swipe performed: Forward");
-                        sendSwipe(initialX,finalX);
-                    }
-                    else if (initialX > finalX) {
-                        Log.d("On touch", "Right to Left swipe performed: Backward");
-                        sendSwipe(initialX,finalX);
-                    }
+//                    if (initialX < finalX) {
+//                        Log.d("On touch", "Left to Right swipe performed: Forward");
+//                        sendSwipe(initialX,finalX);
+//                    }
+//                    else if (initialX > finalX) {
+//                        Log.d("On touch", "Right to Left swipe performed: Backward");
+//                        sendSwipe(initialX,finalX);
+//                    }
+                    sendSwipe(initialX,finalX);
                 }
                 else if (oldX == current_x && oldY == current_y && touchState == 1) {
                     sendMouseTapped();
@@ -119,10 +120,10 @@ public class MainActivity extends BaseActivity {
 
     private void sendSwipe(float initialX,float finalX){
         if (initialX < finalX){
-            String json_data = String.format("{\"action\": \"forward swipe\"}");
+            String json_data = String.format("{\"action\": \"forward_swipe\"}");
             webSocket.send(json_data);
         }else if (initialX > finalX){
-            String json_data = String.format("{\"action\": \"backward swipe\"}");
+            String json_data = String.format("{\"action\": \"backward_swipe\"}");
             webSocket.send(json_data);
         }
     }
