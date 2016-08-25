@@ -7,10 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.justwyne.windowshopping.models.Cart;
+import com.example.justwyne.windowshopping.models.Color;
+import com.example.justwyne.windowshopping.models.Product;
+import com.example.justwyne.windowshopping.models.ProductOrder;
 
 import java.util.ArrayList;
 
@@ -27,12 +31,10 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-//        Log.d("Intent", "Cart");
-//        cart = (Cart) getIntent().getSerializableExtra("cart");
-        initInstances();
-//        Log.d("Cart", String.format("%s %s", cart.size(),cart.getTotal()));
-//        createProductOrder();
         cart = Cart.getInstance();
+        initInstances();
+        createProductOrder();
+
     }
 
     private void initInstances(){
@@ -48,17 +50,23 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void createProductOrder(){
-        LinearLayout orderLayout = new LinearLayout(this);
-        orderLayout.setOrientation(LinearLayout.VERTICAL);
+        for (ProductOrder productOrder : cart.getProductList()) {
 
+            Product product = productOrder.getProduct();
+            Color color = productOrder.getColor();
+            String size = productOrder.getSize();
+            int quantity = productOrder.getQuantity();
 
-        tvProductOrder = new TextView(this);
+            LinearLayout orderLayout = new LinearLayout(this);
+            orderLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-        tvProductOrder.setText(cart.size());
-        tvProductOrder.setLayoutParams(paramsOrder);
+            tvProductOrder = new TextView(this);
+            tvProductOrder.setText(String.format("Product ID: %s\nProduct: %s\nColor: %s\nSize: %s\nQuantity %s\n", product.getId(), product.getName(), color.getName(), size, quantity));
+            tvProductOrder.setLayoutParams(paramsOrder);
 
-        orderLayout.addView(tvProductOrder);
-        linearLayoutOrder.addView(orderLayout);
+            orderLayout.addView(tvProductOrder);
+            linearLayoutOrder.addView(orderLayout);
+        }
     }
 
     private void sendIntent(){

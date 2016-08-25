@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.justwyne.windowshopping.models.Cart;
 import com.example.justwyne.windowshopping.models.Color;
@@ -87,7 +88,7 @@ public class DetailsActivity extends BaseActivity {
 //                Log.d("Adding", String.format("%s %s %s", product.getName(),size,color.getName()));
                 cart.add(product,color,size);
 //                Log.d("Count", String.format("%s", cart.size()));
-
+                Toast.makeText(DetailsActivity.this,"Your item is added.",Toast.LENGTH_SHORT).show();
                 cart.summary();
 
             }
@@ -97,7 +98,7 @@ public class DetailsActivity extends BaseActivity {
         btnViewCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                sendIntent();
+                sendIntent();
             }
         });
 
@@ -203,7 +204,6 @@ public class DetailsActivity extends BaseActivity {
     private void sendIntent(){
         Intent intent;
         intent = new Intent(this, CartActivity.class);
-//        intent.putExtra("cart", cart);
         startActivity(intent);
     }
 

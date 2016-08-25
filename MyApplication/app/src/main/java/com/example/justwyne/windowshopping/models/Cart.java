@@ -54,4 +54,8 @@ public class Cart implements Serializable {
             Log.v("Cart-Product", product.toString() + "\t" + productOrder.getSize() + " " + productOrder.getColor().getName());
         }
     }
+
+    public ArrayList<ProductOrder> getProductList() {
+        return productList;
+    }
 }
