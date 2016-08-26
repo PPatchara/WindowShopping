@@ -40,6 +40,20 @@ public class Cart implements Serializable {
         productList.add(productOrder);
     }
 
+    public ProductOrder getProduct(Product product,Color color,String size){
+        for (ProductOrder productOrder : productList) {
+            if (productOrder.equals(product, color, size)) {
+                return productOrder;
+            }
+        }
+        return null;
+    }
+
+    public void remove(Product product,Color color,String size) {
+        ProductOrder productOrder = getProduct(product, color, size);
+        productList.remove(productOrder);
+    }
+
     public double getTotal() {
         double total = 0;
         for (ProductOrder productOrder: productList) {

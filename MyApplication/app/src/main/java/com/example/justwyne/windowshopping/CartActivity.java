@@ -3,11 +3,8 @@ package com.example.justwyne.windowshopping;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,8 +12,6 @@ import com.example.justwyne.windowshopping.models.Cart;
 import com.example.justwyne.windowshopping.models.Color;
 import com.example.justwyne.windowshopping.models.Product;
 import com.example.justwyne.windowshopping.models.ProductOrder;
-
-import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
     private Button btnCheckout;
@@ -37,7 +32,7 @@ public class CartActivity extends AppCompatActivity {
 
         cart = Cart.getInstance();
         initInstances();
-        createProductOrder();
+        renderProductOrder();
 
     }
 
@@ -56,18 +51,20 @@ public class CartActivity extends AppCompatActivity {
         });
     }
 
-    private void createProductOrder(){
+    private void renderProductOrder(){
         for (ProductOrder productOrder : cart.getProductList()) {
 
-            Product product = productOrder.getProduct();
-            Color color = productOrder.getColor();
-            String size = productOrder.getSize();
-            int quantity = productOrder.getQuantity();
+            final Product product = productOrder.getProduct();
+            final Color color = productOrder.getColor();
+            final String size = productOrder.getSize();
+            final int quantity = productOrder.getQuantity();
 
-            LinearLayout orderLayout = new LinearLayout(this);
+            final LinearLayout orderLayout = new LinearLayout(this);
             orderLayout.setOrientation(LinearLayout.HORIZONTAL);
-            LinearLayout btnRemoveLayout = new LinearLayout(this);
+            final LinearLayout btnRemoveLayout = new LinearLayout(this);
             btnRemoveLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+            final View view = new View(this);
 
             tvProductOrder = new TextView(this);
             tvProductOrder.setText(String.format("Product ID: %s\nProduct: %s\nColor: %s\nSize: %s\nQuantity %s", product.getId(), product.getName(), color.getName(), size, quantity));
@@ -82,11 +79,19 @@ public class CartActivity extends AppCompatActivity {
                 paramsBtnRemove.setMargins(0, 0, 20, 0);
                 btnRemove.setLayoutParams(paramsBtnRemove);
 
-
+                // Set click listener for button
+                btnRemove.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        cart.remove(product,color,size);
+                        linearLayoutOrder.removeView(orderLayout);
+                        linearLayoutOrder.removeView(btnRemoveLayout);
+                        linearLayoutOrder.removeView(view);
+                        tvSubTotal.setText(String.format("$ %.2f", cart.getTotal()));
+                        tvTotal.setText(String.format("$ %.2f", cart.getTotal()));
+                    }
+                });
 
             }
-
-            View view = new View(this);
             view.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     5
