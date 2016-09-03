@@ -52,6 +52,10 @@
 					  	<button type="button" class="btn btn-translucent btn-circle ivory-color" data-color="ivory" onclick="currentSelected(this);"></button>
 					  	<button type="button" class="btn btn-translucent btn-circle pink-color" data-color="pink" onclick="currentSelected(this);"></button>
 					</div>
+					<div>
+						<div class="glyphicon glyphicon-info-sign"> Swipe <span class="glyphicon glyphicon-arrow-left"> </span> <span class="glyphicon glyphicon-arrow-right"></span> on a touchpad to change colours.</div>
+						<div class="glyphicon glyphicon-info-sign margin-t-10"> See more details on a mobile phone.</div>
+					</div>
 				</div>
 				<div class="col-md-2 btn-next">
 					<button type="button" data-role="next" class="btn btn-primary glyphicon glyphicon-chevron-right"></button>
@@ -85,6 +89,10 @@
 					<div class="button-group">
 						<button type="button" class="btn btn-translucent btn-circle taupe-color btn-clicked" data-color="taupe" onclick="currentSelected(this);"></button>
 						<button type="button" class="btn btn-translucent btn-circle oldrose-color" data-color="oldrose" onclick="currentSelected(this);"></button>
+					</div>
+					<div>
+						<div class="glyphicon glyphicon-info-sign"> Swipe <span class="glyphicon glyphicon-arrow-left"> </span> <span class="glyphicon glyphicon-arrow-right"></span> on a touchpad to change colours.</div>
+						<div class="glyphicon glyphicon-info-sign margin-t-10"> See more details on a mobile phone.</div>
 					</div>
 				</div>
 				<div class="col-md-2 btn-next">
@@ -132,10 +140,6 @@
 			var list = ['current_product', 'forward_swipe', 'backward_swipe'];
 
 			var msgJSON = JSON.parse(current.data);
-
-			// if(list.indexOf(msgJSON['action']) == -1) {
-			// 	return;
-			// }
 
 			if(msgJSON['action'] == 'current_product') {
 				var product_id = msgJSON["product_id"];
