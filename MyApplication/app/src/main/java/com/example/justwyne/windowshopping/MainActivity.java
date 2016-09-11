@@ -2,6 +2,8 @@ package com.example.justwyne.windowshopping;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -20,11 +22,21 @@ public class MainActivity extends BaseActivity {
     float initialX, initialY;
     long startTime = 0;
     String TAG = "onTouchEvent";
+    String ipAddress;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ipAddress = getIpAddress();
+    }
+
+    public String getIpAddress() {
+        //Display the IP address, obtained from function getIPAddress, using textview
+        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        int ip = wifiInfo.getIpAddress();
+        return String.format("%d.%d.%d.%d", (ip & 0xff), (ip >> 8 & 0xff), (ip >> 16 & 0xff), (ip >> 24 & 0xff));
     }
 
     public boolean onTouchEvent(MotionEvent motionEvent)
@@ -100,22 +112,22 @@ public class MainActivity extends BaseActivity {
     }
 
     private void sendMouseMove(int deltaX, int deltaY) {
-        String json_data = String.format("{\"action\": \"pos\", \"delta_x\": %d, \"delta_y\":%d}", deltaX, deltaY);
+        String json_data = String.format("{\"action\": \"pos\", \"delta_x\": %d, \"delta_y\": %d, \"ip\": %s}", deltaX, deltaY, ipAddress);
         webSocket.send(json_data);
     }
 
     private void sendMouseTapped() {
         Log.d("On touch (tap)", "Tapped");
-        String json_data = String.format("{\"action\": \"tap\"}");
+        String json_data = String.format("{\"action\": \"tap\", \"ip\": %s}", ipAddress);
         webSocket.send(json_data);
     }
 
     private void sendSwipe(float initialX,float finalX){
         if (initialX < finalX){
-            String json_data = String.format("{\"action\": \"forward_swipe\"}");
+            String json_data = String.format("{\"action\": \"forward_swipe\", \"ip\": %s}", ipAddress);
             webSocket.send(json_data);
         }else if (initialX > finalX){
-            String json_data = String.format("{\"action\": \"backward_swipe\"}");
+            String json_data = String.format("{\"action\": \"backward_swipe\", \"ip\": %s}", ipAddress);
             webSocket.send(json_data);
         }
     }

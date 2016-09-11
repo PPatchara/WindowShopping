@@ -1,57 +1,42 @@
 package com.example.justwyne.listviewtest;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    String ipaddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Get reference of widgets from XML layout
-        final ListView lv = (ListView) findViewById(R.id.lv);
-        final Button btn = (Button) findViewById(R.id.btn);
-
-        // Initializing a new String Array
-        String[] fruits = new String[] {
-                "Cape Gooseberry",
-                "Capuli cherry"
-        };
-
-        // Create a List from String Array elements
-        final List<String> fruits_list = new ArrayList<String>(Arrays.asList(fruits));
-
-        // Create an ArrayAdapter from List
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, fruits_list);
-
-        // DataBind ListView with items from ArrayAdapter
-        lv.setAdapter(arrayAdapter);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Add new Items to List
-                fruits_list.add("Loquat");
-                fruits_list.add("Pear");
-                /*
-                    notifyDataSetChanged ()
-                        Notifies the attached observers that the underlying
-                        data has been changed and any View reflecting the
-                        data set should refresh itself.
-                 */
-                arrayAdapter.notifyDataSetChanged();
-            }
-        });
+        TextView tv = (TextView) findViewById(R.id.textView1);
+        //Display the IP address, obtained from function getIPAddress, using textview
+        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        int ipAddress = wifiInfo.getIpAddress();
+        tv.setText(String.format("%d.%d.%d.%d", (ipAddress & 0xff), (ipAddress >> 8 & 0xff), (ipAddress >> 16 & 0xff), (ipAddress >> 24 & 0xff)));
+        System.out.println(String.format("%d.%d.%d.%d", (ipAddress & 0xff), (ipAddress >> 8 & 0xff), (ipAddress >> 16 & 0xff), (ipAddress >> 24 & 0xff)));
     }
+
 }

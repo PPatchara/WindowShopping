@@ -2,9 +2,8 @@ package com.example.justwyne.windowshopping;
 
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
-
 import org.java_websocket.WebSocketImpl;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -16,7 +15,7 @@ import websocket.ControlWebSocket;
  */
 public class BaseActivity extends AppCompatActivity{
 
-    protected String location = "ws://10.200.249.83:8887"; //change IP when connect internet
+    protected String location = "ws://10.217.27.165:8887"; //change IP when connect internet
     protected URI uri;
     protected ControlWebSocket webSocket;
 

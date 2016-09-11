@@ -10,16 +10,8 @@
     tools:context="com.example.justwyne.listviewtest.MainActivity">
 
 
-    <Button
-        android:id="@+id/btn"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add New Items To ListView"
-        />
-    <ListView
-        android:id="@+id/lv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn"
-        />
+        android:layout_height="wrap_content" />
 </RelativeLayout>
