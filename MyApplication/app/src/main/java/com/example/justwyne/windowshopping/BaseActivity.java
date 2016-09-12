@@ -15,7 +15,7 @@ import websocket.ControlWebSocket;
  */
 public class BaseActivity extends AppCompatActivity{
 
-    protected String location = "ws://10.217.27.165:8887"; //change IP when connect internet
+    protected String location = "ws://10.200.239.246:8887"; //change IP when connect internet
     protected URI uri;
     protected ControlWebSocket webSocket;
 

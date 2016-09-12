@@ -170,6 +170,7 @@
 		function updateCurrentProduct(id, color) {
 			var elem = $("area[data-id="+ id +"]");
 			elem.data('current', color);
+
 		}
 
 		function findMatchProduct(id,color){
@@ -187,10 +188,11 @@
 			console.log("Changed image: " + id + " " + color);
 			var productJSON = findMatchProduct(id,color);
 			$(".mapster_el").attr('src', 'images/model-3/' + productJSON['image']);
+			
 		}
 
 		function clickListener(e){
-			var id = $(this).parents('div[data-group]').data('id');//
+			var id = $(this).parents('div[data-group]').data('id');
 			var color = $(this).data('color');
 			updateActiveButton(id, color);
 		}
@@ -206,6 +208,7 @@
 			elem.find('button').removeClass('btn-clicked');
 			button.addClass('btn-clicked');
 			changeImage(id, color);
+			updateCurrentProduct(id, color); //add
 		}
 
 		$('button[data-role=prev], button[data-role=next]').click(function(e) {
@@ -218,10 +221,11 @@
 			var $curr = root.find('button.btn-clicked');
 			if ( role == 'next') {
 				var $next = ($curr.next().length) ? $curr.next() : root.find('button.btn-circle').first();
-			} else {
+			} else if (role == 'prev') {
 				var $next = ($curr.prev().length) ? $curr.prev() : root.find('button.btn-circle').last();
 			}
 			updateActiveButton(id, $next.data('color'));
+			send_current_product(id,$next.data('color')); //add
 		});
 
 		function changeState(role) {
@@ -231,10 +235,12 @@
 			var $curr = root.find('button.btn-clicked');
 			if ( role == 'next') {
 				var $next = ($curr.next().length) ? $curr.next() : root.find('button.btn-circle').first();
-			} else {
+			} else if (role == 'prev') {
 				var $next = ($curr.prev().length) ? $curr.prev() : root.find('button.btn-circle').last();
 			}
 			updateActiveButton(id, $next.data('color'));
+			send_current_product(id,$next.data('color')); //add
+
 		}
 
 		function send_current_product(product_id, color) {

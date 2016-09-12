@@ -13,7 +13,7 @@ import java.nio.channels.NotYetConnectedException;
 
 public class MainActivity extends BaseActivity {
     private static final int REQ_CODE = 001;
-    public static final int MIN_SWIPE_TIME = 250;
+    public static final int MIN_SWIPE_TIME = 350;
 
     private int oldX = 0;
     private int oldY = 0;
@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ipAddress = getIpAddress();
+        System.out.println(ipAddress);
     }
 
     public String getIpAddress() {
