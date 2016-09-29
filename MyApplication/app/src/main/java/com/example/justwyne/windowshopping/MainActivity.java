@@ -165,9 +165,15 @@ public class MainActivity extends BaseActivity {
         sensorManager.registerListener(accelListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
+//    public void onStop() {
+//        super.onStop();
+//        sensorManager.unregisterListener(accelListener);
+//    }
+
     private void sendIntent() {
         Log.d(TAG, "send intent New activity");
         sensorManager.unregisterListener(accelListener);
+//        finish();
         Intent intent = new Intent(MainActivity.this, TouchpadActivity.class);
         startActivity(intent);
         sendTilt(state);

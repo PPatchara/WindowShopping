@@ -54,7 +54,7 @@ public class TouchpadActivity extends BaseActivity implements GestureDetector.On
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
-                gap = y - z;
+                gap = Math.abs(y - z);
 
                 Log.d(TAG, (int) x + " " + (int) y + " " + (int) z + " " + (int) gap);
 
@@ -183,14 +183,27 @@ public class TouchpadActivity extends BaseActivity implements GestureDetector.On
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("Cycle", "onPause");
+        sensorManager.unregisterListener(accelListener);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(accelListener, sensor, SensorManager.SENSOR_DELAY_UI);
+        sensorManager.registerListener(accelListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
+
+//    public void onStop() {
+//        super.onStop();
+//        sensorManager.unregisterListener(accelListener);
+//    }
 
     private void sendIntent() {
         Log.d(TAG, "Finish");
         sensorManager.unregisterListener(accelListener);
+//        finish();
         Intent intent = new Intent(TouchpadActivity.this, MainActivity.class);
         startActivity(intent);
         sendTilt(state);

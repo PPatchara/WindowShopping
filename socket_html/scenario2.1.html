@@ -14,127 +14,57 @@
 	<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style3.css">
+<!-- 	<link rel="stylesheet" href="css/style3.css"> -->
 </head>
 <body>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12 margin-t-20">
-				<img src="images/model-3/dress_snow_shoe_taupe.jpg" width="100%" height="100%" border="0" alt="" usemap="#product_map" id="model">
-				<map name="product_map">
-		    		<area shape="poly" group="dress" data-current="snow" data-id="CD001" coords="506,155,532,156,545,147,561,161,600,179,607,189,610,209,608,272,606,308,615,351,619,416,617,467,598,463,596,482,590,499,589,558,597,556,600,556,604,666,600,665,589,675,575,676,566,674,551,677,539,673,523,677,511,672,488,678,473,672,461,677,444,673,429,678,418,673,395,671,388,667,403,534,431,547,435,543,434,539,425,526,430,524,431,499,427,481,419,465,415,450,395,451,388,453,385,451,387,420,385,367,389,289,391,281,392,221,391,212,395,194,398,172,401,164,403,161,417,151,429,147,446,145,456,142,506,155,504,169,499,195,502,250,509,216,513,192,507,156" 
-		    		href="#">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-id="#001" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-id="#002" data-slide-to="1"></li>
+				</ol>
 
-		    		<area shape="poly" group="heels" data-current="taupe" data-id="SH001" coords="493,867,506,890,505,898,497,908,492,919,492,953,487,952,488,938,486,954,478,968,449,973,437,971,435,969,439,957,443,947,461,948,476,947,484,943,487,920,491,906,493,868" 
-		    		href="#">
+				  <!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox">
+				    <div class="item active">
+				    	<img src="images/salamanca.jpg">
+				     	<div class="carousel-caption">
+				        
+				      	</div>
+				    </div>
+				    <div class="item">
+				    	<img src="images/cradleMt.jpg">
+				    	<div class="carousel-caption">
+				    	
+				    	</div>
+				    </div>
+<!-- 				    <div class="item">
+				    	<img src="..." alt="...">
+				    	<div class="carousel-caption">
+				    	
+				    	</div>
+				    </div> -->
+				</div>
 
-		    		<area shape="poly" group="heels" data-current="taupe" data-id="SH001" coords="516,891,508,930,504,939,499,948,503,966,514,971,529,970,546,964,549,954,549,939,550,927,545,944,541,949,518,950,507,944,509,927" 
-		    		href="#">
-				</map>
+				  <!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
 			</div>
 		</div>
 	</div>
 
-	<div data-group="dress" data-id="CD001" class="tooltip-layout tooltip-layout-dress" style="display: none;">
-		<div class="col-md-12">
-			<div class="row border">
-				<div class="col-md-2 btn-prev">
-					<button type="button" data-role="prev" class="btn btn-primary glyphicon glyphicon-chevron-left"></button>
-				</div>
-				<div class="col-md-8">
-					<div class="header-product">
-						<h3>Lace Shift Dress</h3>
-						<h4 class="margin-b-10">1,229 THB</h4>
-					</div>
-					<div class="button-group">
-						<button type="button" class="btn btn-translucent btn-circle snow-color btn-clicked" data-color="snow" onclick="currentSelected(this);"></button>
-					  	<button type="button" class="btn btn-translucent btn-circle ivory-color" data-color="ivory" onclick="currentSelected(this);"></button>
-					  	<button type="button" class="btn btn-translucent btn-circle pink-color" data-color="pink" onclick="currentSelected(this);"></button>
-					</div>
-					<div>
-						<div class="glyphicon glyphicon-info-sign"> Swipe <span class="glyphicon glyphicon-arrow-left"> </span> <span class="glyphicon glyphicon-arrow-right"></span> on a touchpad to change colours.</div>
-						<div class="glyphicon glyphicon-info-sign margin-t-10"> See more details on a mobile phone.</div>
-					</div>
-				</div>
-				<div class="col-md-2 btn-next">
-					<button type="button" data-role="next" class="btn btn-primary glyphicon glyphicon-chevron-right"></button>
-				</div>
-			</div>
-		</div>
-		
-		<!-- <h3>Lace Shift Dress</h3>
-		<h4 class="margin-b-10">1,229 THB</h4>
-		<hr>
-		<button type="button" data-role="prev" class="btn btn-lg btn-xlg btn-primary margin-t-10 pull-left glyphicon glyphicon-chevron-left"></button>
-		<span style="margin-left:20px; margin-right:20px;">
-			<button type="button" class="btn btn-translucent btn-circle snow-color btn-clicked" data-color="snow" onclick="currentSelected(this);"></button>
-		  	<button type="button" class="btn btn-translucent btn-circle ivory-color" data-color="ivory" onclick="currentSelected(this);"></button>
-		  	<button type="button" class="btn btn-translucent btn-circle pink-color" data-color="pink" onclick="currentSelected(this);"></button>
-		</span>
-	  	<button type="button" data-role="next" class="btn btn-lg btn-xlg btn-primary margin-t-10 pull-right glyphicon glyphicon-chevron-right"></button> -->
-	</div>
-
-	<div data-group="heels" data-id="SH001" class="tooltip-layout tooltip-layout-heels" style="display: none;">
-		<div class="col-md-12">
-			<div class="row border">
-				<div class="col-md-2 btn-prev">
-					<button type="button" data-role="prev" class="btn btn-primary glyphicon glyphicon-chevron-left"></button>
-				</div>
-				<div class="col-md-8">
-					<div class="header-product">
-						<h3>Handjive High Heels</h3>
-						<h4 class="margin-b-10">2,200 THB</h4>
-					</div>
-					<div class="button-group">
-						<button type="button" class="btn btn-translucent btn-circle taupe-color btn-clicked" data-color="taupe" onclick="currentSelected(this);"></button>
-						<button type="button" class="btn btn-translucent btn-circle oldrose-color" data-color="oldrose" onclick="currentSelected(this);"></button>
-					</div>
-					<div>
-						<div class="glyphicon glyphicon-info-sign"> Swipe <span class="glyphicon glyphicon-arrow-left"> </span> <span class="glyphicon glyphicon-arrow-right"></span> on a touchpad to change colours.</div>
-						<div class="glyphicon glyphicon-info-sign margin-t-10"> See more details on a mobile phone.</div>
-					</div>
-				</div>
-				<div class="col-md-2 btn-next">
-					<button type="button" data-role="next" class="btn btn-primary glyphicon glyphicon-chevron-right"></button>
-				</div>
-			</div>
-		</div>
-
-		
-		<!-- <button type="button" data-role="prev" class="btn btn-lg btn-primary margin-t-10 pull-left glyphicon glyphicon-chevron-left"></button>
-		<span style="margin-left:20px; margin-right:20px;">
-			<button type="button" class="btn btn-translucent btn-circle taupe-color btn-clicked" data-color="taupe" onclick="currentSelected(this);"></button>
-			<button type="button" class="btn btn-translucent btn-circle oldrose-color" data-color="oldrose" onclick="currentSelected(this);"></button>
-		</span>
-	  	<button type="button" data-role="next" class="btn btn-lg btn-primary margin-t-10 pull-right glyphicon glyphicon-chevron-right"></button> -->
-	</div>
-	
-	<!-- <script type="text/html" id="tooltips-dress">
-		<div data-group="dress" data-id="CD001">
-			<h4>Lace Shift Dress</h4>
-			<h5 class="margin-b-10">1,229 THB</h5>
-			<button type="button" class="btn btn-translucent btn-circle snow-color" data-color="snow" onclick="currentSelected(this);activeButton(this);"></button>
-		  	<button type="button" class="btn btn-translucent btn-circle ivory-color" data-color="ivory" onclick="currentSelected(this);activeButton(this);"></button>
-		  	<button type="button" class="btn btn-translucent btn-circle pink-color" data-color="pink" onclick="currentSelected(this);activeButton(this);"></button>
-		  	<button type="button" class="btn btn-primary margin-t-10">ADD TO CART</button>
-		</div>
-	</script>
-
-	<script type="text/html" id="tooltips-shoe">
-		<div data-group="heels" data-id="SH001">
-			<h4>Handjive High Heels</h4>
-			<h5 class="margin-b-10">2,200 THB</h5>
-			<button type="button" class="btn btn-translucent btn-circle taupe-color" data-color="taupe" onclick="currentSelected(this);activeButton(this);"></button>
-			<button type="button" class="btn btn-translucent btn-circle oldrose-color" data-color="oldrose" onclick="currentSelected(this);activeButton(this);"></button>
-			<button type="button" class="btn btn-primary margin-t-10">ADD TO CART</button>
-		</div>	
-	</script> -->
-	
-	
 	<script>
 		
-		var ws = new WebSocket("ws://localhost:8887/pos");
+		var ws = new WebSocket("ws://10.217.26.58:8887/pos");
 		ws.onmessage = function receiveData (current) {
 
 			var list = ['current_product', 'forward_swipe', 'backward_swipe'];
@@ -144,9 +74,6 @@
 			if(msgJSON['action'] == 'current_product') {
 				var product_id = msgJSON["product_id"];
 				var color = msgJSON["color"];
-				
-				updateCurrentProduct(product_id, color);
-				updateActiveButton(product_id, color);
 			}
 			else if(msgJSON['action'] == 'forward_swipe') {
 				changeState('next');
@@ -156,140 +83,33 @@
 			}
 		}
 
-		function currentSelected(button) {
-			var data = $(button).data();	
-
-			var id = $(button).parents('div[data-group]').data('id'); //
-			var color = data['color'];
-
-			updateCurrentProduct(id, color);
-			changeImage(id, color);
-			send_current_product(id,color);
-		}
-
-		function updateCurrentProduct(id, color) {
-			var elem = $("area[data-id="+ id +"]");
-			elem.data('current', color);
-
-		}
-
-		function findMatchProduct(id,color){
-			var product = _.find(productJSON["product_list"], {'id': id});
-			var color = _.find(product["colors"], {'name': color});
-			var image = _.get(color, ['image','0']);
-			return {
-				"product": product,
-				"color": color,
-				"image": image
-			};
-		}
-
-		function changeImage(id,color) {
-			console.log("Changed image: " + id + " " + color);
-			var productJSON = findMatchProduct(id,color);
-			$(".mapster_el").attr('src', 'images/model-3/' + productJSON['image']);
-			
-		}
-
-		function clickListener(e){
-			var id = $(this).parents('div[data-group]').data('id');
-			var color = $(this).data('color');
-			updateActiveButton(id, color);
-		}
-		$("div[data-group] .button-group button").click(clickListener);
-
-		/**
-		* 1. Remove CSS class btn-clicked 
-		* 2. Add CSS class btn-clicked
-		**/
-		function updateActiveButton(id,color){
-			var elem = $("div[data-id=" + id +"]");
-			var button = elem.find('button[data-color=' + color + ']');
-			elem.find('button').removeClass('btn-clicked');
-			button.addClass('btn-clicked');
-			changeImage(id, color);
-			updateCurrentProduct(id, color); //add
-		}
-
-		$('button[data-role=prev], button[data-role=next]').click(function(e) {
-			var button = $(this);
-			var root = $(this).parents('div[data-group]');
-			var role = button.data('role');
-			var group = root.data('group');
-			var id = root.data('id');
-
-			var $curr = root.find('button.btn-clicked');
-			if ( role == 'next') {
-				var $next = ($curr.next().length) ? $curr.next() : root.find('button.btn-circle').first();
-			} else if (role == 'prev') {
-				var $next = ($curr.prev().length) ? $curr.prev() : root.find('button.btn-circle').last();
-			}
-			updateActiveButton(id, $next.data('color'));
-			send_current_product(id,$next.data('color')); //add
-		});
-
 		function changeState(role) {
-			var root = $('div.tooltip-layout:visible');
-			var group = root.data('group');
-			var id = root.data('id');
-			var $curr = root.find('button.btn-clicked');
 			if ( role == 'next') {
-				var $next = ($curr.next().length) ? $curr.next() : root.find('button.btn-circle').first();
+				$('.carousel').carousel('next');
+				currentSelected();
 			} else if (role == 'prev') {
-				var $next = ($curr.prev().length) ? $curr.prev() : root.find('button.btn-circle').last();
+				$('.carousel').carousel('prev');
+				currentSelected();
 			}
-			updateActiveButton(id, $next.data('color'));
-			send_current_product(id,$next.data('color')); //add
-
 		}
 
-		function send_current_product(product_id, color) {
+		function currentSelected() {
+			var id = $('li.active').data('id');
+			send_current_event(id);	
+			console.log(id);
+		}
+
+		function send_current_event(id) {
 			var data = JSON.stringify({
-				"action": "current_product",
-				"product_id": product_id,
-				"color": color
+				"action": "current_selected",
+				"event_id": id
 			});
 			console.log(data);
 			ws.send(data);
 		}
 
 		$(document).ready(function() {
-		    $('img').mapster({
-		    	showToolTip: true,
-		        fillOpacity: 0,
-		        fillColor: "FFFFFF",
-		        strokeColor: "D3D3D3",
-		        stroke: true,
-		        mapKey: "group",
-		        strokeWidth: 1,
-		        isSelectable: false,
-		        render_highlight: {
-		            strokeWidth: 2
-		        },
-		        toolTipClose: ['toolTip-click'],
-		        areas: [
-		        	{
-		        		key: 'dress',
-		        		stroke: true,
-		        		toolTip: $("#tooltips-dress").html()
-		        	},
-		        	{
-		        		key: 'heels',
-		        		stroke: true,
-		        		toolTip: $("#tooltips-shoe").html()
-		        	}
-		        ],
-		        onMouseover: function(obj) {
-		        	$('div[data-group]').hide();
-		        	var tooltip = $('div[data-group=' + obj.key + ']');
-		        	var currentTarget = $(obj.e.currentTarget);
-		        	tooltip.show();
-
-		        	var product_id = currentTarget.data('id');
-		        	var color = currentTarget.data('current');
-		        	send_current_product(product_id, color);
-		        }
-		    });
+			$('.carousel').carousel();
 		});
 
 	</script>
