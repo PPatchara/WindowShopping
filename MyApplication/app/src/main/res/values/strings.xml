@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WindowShopping</string>
+    <string name="app_name">Upcoming Events</string>
     <string name="title_pName">Product Name</string>
     <string name="title_pColor">COLOR : </string>
     <string name="title_pSize">SIZE</string>
@@ -13,6 +13,15 @@
     <string name="title_shippingMethod">SHIPPING METHOD</string>
     <string name="title_paymentMethod">PAYMENT METHOD</string>
     <string name="title_confirmOrder">CONFIRM ORDER</string>
+
+    <string name="title_eventName">Event Name</string>
+    <string name="title_eventDescription">DESCRIPTION</string>
+    <string name="title_eventDetail">EVENT DETAILS</string>
+    <string name="title_eventPlace">WHERE</string>
+    <string name="title_eventDate">WHEN</string>
+    <string name="title_eventTime">TIME</string>
+    <string name="title_eventPrice">PRICE</string>
+
     <string name="btn_addCart">add to cart</string>
     <string name="btn_viewCart">view cart</string>
     <string name="btn_checkout">checkout</string>

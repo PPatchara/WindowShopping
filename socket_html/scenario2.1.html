@@ -225,7 +225,7 @@
 				var $next = ($curr.prev().length) ? $curr.prev() : root.find('button.btn-circle').last();
 			}
 			updateActiveButton(id, $next.data('color'));
-			send_current_product(id,$next.data('color'));
+			send_current_product(id,$next.data('color')); //add
 		});
 
 		function changeState(role) {
@@ -239,7 +239,7 @@
 				var $next = ($curr.prev().length) ? $curr.prev() : root.find('button.btn-circle').last();
 			}
 			updateActiveButton(id, $next.data('color'));
-			send_current_product(id,$next.data('color')); 
+			send_current_product(id,$next.data('color')); //add
 
 		}
 

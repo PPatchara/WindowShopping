@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/todo_icon"-->
+        <!--android:layout_width="100px"-->
+        <!--android:layout_height="100px"-->
+        <!--android:layout_margin="20px"-->
+        <!--android:focusable="false" >-->
+    <!--</ImageButton>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_margin="20px"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tvEventName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Event Name"
+            android:textSize="18sp"
+            android:textColor="#000000" >
+        </TextView>
+        <TextView
+            android:id="@+id/tvEventSubCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvEventName"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:text="Sub-category"
+            android:textSize="14sp"
+            android:textColor="#6b6b6b" >
+        </TextView>
+    </RelativeLayout>
+</LinearLayout>
