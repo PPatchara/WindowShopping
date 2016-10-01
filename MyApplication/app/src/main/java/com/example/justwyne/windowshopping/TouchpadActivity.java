@@ -26,7 +26,7 @@ public class TouchpadActivity extends BaseActivity implements GestureDetector.On
     private SensorEventListener accelListener;
     private double gap;
     private boolean tiltDown = true;
-    private String state = "TiltDown";
+    private String state = "TiltUp";
 
 //    private int oldX = 0;
 //    private int oldY = 0;
@@ -58,7 +58,7 @@ public class TouchpadActivity extends BaseActivity implements GestureDetector.On
 
                 Log.d(TAG, (int) x + " " + (int) y + " " + (int) z + " " + (int) gap);
 
-                if ((int) gap > -4 && (int) gap < 5) {
+                if ((int) gap > -4 && (int) gap < 4) {
                     sendIntent();
                 }
 

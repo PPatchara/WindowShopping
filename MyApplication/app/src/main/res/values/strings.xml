@@ -21,6 +21,8 @@
     <string name="title_eventDate">WHEN</string>
     <string name="title_eventTime">TIME</string>
     <string name="title_eventPrice">PRICE</string>
+    <string name="btn_save">save this event</string>
+    <string name="btn_viewEvent">event list</string>
 
     <string name="btn_addCart">add to cart</string>
     <string name="btn_viewCart">view cart</string>

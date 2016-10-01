@@ -28,14 +28,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:text="@string/btn_viewCart"/>
+                    android:text="@string/btn_viewEvent"/>
 
-                <ImageView
-                    android:id="@+id/ivImage"
-                    android:src="@drawable/dress_snow_crop"
-                    android:layout_width="match_parent"
-                    android:layout_height="400px"
-                    android:layout_marginBottom="16dp"/>
+                <!--<ImageView-->
+                    <!--android:id="@+id/ivImage"-->
+                    <!--android:src="@drawable/dress_snow_crop"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="400px"-->
+                    <!--android:layout_marginBottom="16dp"/>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -174,7 +174,7 @@
 
                 <Button
                     android:id="@+id/btnAddToCart"
-                    android:text="@string/btn_addCart"
+                    android:text="@string/btn_save"
                     android:layout_below="@id/colorLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

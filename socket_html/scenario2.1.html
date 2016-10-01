@@ -31,22 +31,10 @@
 				<div class="carousel-inner" role="listbox">
 				    <div class="item active">
 				    	<img src="images/salamanca.jpg">
-				     	<div class="carousel-caption">
-				        
-				      	</div>
 				    </div>
 				    <div class="item">
 				    	<img src="images/cradleMt.jpg">
-				    	<div class="carousel-caption">
-				    	
-				    	</div>
 				    </div>
-<!-- 				    <div class="item">
-				    	<img src="..." alt="...">
-				    	<div class="carousel-caption">
-				    	
-				    	</div>
-				    </div> -->
 				</div>
 
 				  <!-- Controls -->
@@ -63,53 +51,129 @@
 	</div>
 
 	<script>
-		
-		var ws = new WebSocket("ws://10.217.26.58:8887/pos");
+
+		// $(document).ready(function() {
+		// 	var ws = new WebSocket("ws://10.217.26.58:8887/pos");
+		// 	ws.onmessage = function receiveData (current) {
+
+		// 		var list = ['current_product', 'forward_swipe', 'backward_swipe'];
+
+		// 		var msgJSON = JSON.parse(current.data);
+
+		// 		if(msgJSON['action'] == 'current_product') {
+		// 			var product_id = msgJSON["product_id"];
+		// 			var color = msgJSON["color"];
+		// 		}
+		// 		else if(msgJSON['action'] == 'forward_swipe') {
+		// 			changeState('next');
+		// 		}
+		// 		else if(msgJSON['action'] == 'backward_swipe') {
+		// 			changeState('prev')
+		// 		}
+		// 	}
+
+		// 	function currentSelected() {
+		// 		// var id = $('li.active').data('id');
+		// 		// send_current_event(id);	
+		// 		// console.log(id);
+		// 		send_current_event(currentId);	
+		// 	}
+
+		// 	function send_current_event(currentId) {
+		// 		var data = JSON.stringify({
+		// 			"action": "current_selected",
+		// 			"event_id": currentId
+		// 		});
+		// 		console.log(data);
+		// 		ws.send(data);
+		// 	}
+
+		// 	$('.carousel').on('slide.bs.carousel', function() {
+		// 	   currentId = $('.carousel').find('div.active').data('id');
+		// 	   console.log(currentId);
+		// 	});
+
+		// 	$('.carousel').carousel('cycle');
+
+		// 	// $('.carousel').on('slide.bs.carousel', function() {
+		// 	//    currentId = $('.carousel').find('div.active').data('id');
+		// 	//    console.log(currentId);
+		// 	// });
+		// });
+
+		var ws = new WebSocket("ws://localhost:8887/pos");
+		var carousel = $('.carousel');
+		var currentState = 0;
+
 		ws.onmessage = function receiveData (current) {
 
-			var list = ['current_product', 'forward_swipe', 'backward_swipe'];
+			// var list = ['current_product', 'forward_swipe', 'backward_swipe'];
 
 			var msgJSON = JSON.parse(current.data);
 
-			if(msgJSON['action'] == 'current_product') {
-				var product_id = msgJSON["product_id"];
-				var color = msgJSON["color"];
+			if(msgJSON['action'] == 'TiltDown') {
+				disableAutoSlide();
+				jumpTo(getLastState());
 			}
 			else if(msgJSON['action'] == 'forward_swipe') {
 				changeState('next');
 			}
 			else if(msgJSON['action'] == 'backward_swipe') {
-				changeState('prev')
+				changeState('prev');
+			}else if(msgJSON['action'] == 'TiltUp') {
+				keepLastState();
+				enableAutoSlide();
 			}
 		}
 
 		function changeState(role) {
-			if ( role == 'next') {
-				$('.carousel').carousel('next');
-				currentSelected();
-			} else if (role == 'prev') {
-				$('.carousel').carousel('prev');
-				currentSelected();
-			}
+			$('.carousel').carousel(role);
+			sendCurrentEvent();
 		}
 
-		function currentSelected() {
-			var id = $('li.active').data('id');
-			send_current_event(id);	
-			console.log(id);
+		function getCurrentEvent() {
+			// return carousel.find('div.active').data('id');
+			var currentId = $('li.active').data('id');
+			// var currentId = carousel.find('div.active').data('id');
+			return currentId;
+			console.log(currentId);
 		}
 
-		function send_current_event(id) {
+		function keepLastState() {
+			currentState = $('li.active').data('slide-to');
+		}
+
+		function getLastState() {
+			return currentState;
+		}
+
+		function sendCurrentEvent() {
+			var currentEvent = getCurrentEvent();
 			var data = JSON.stringify({
 				"action": "current_selected",
-				"event_id": id
+				"event_id": currentEvent
 			});
 			console.log(data);
 			ws.send(data);
 		}
 
+		function disableAutoSlide() {
+			carousel.carousel('pause');
+			console.log('disable');
+		}
+
+		function enableAutoSlide() {
+			carousel.carousel('cycle');
+			console.log('enable');
+		}
+
+		function jumpTo(currentState) {
+			carousel.carousel(currentState);
+			console.log(currentState);
+		}
+		
 		$(document).ready(function() {
-			$('.carousel').carousel();
+			
 		});
 
 	</script>

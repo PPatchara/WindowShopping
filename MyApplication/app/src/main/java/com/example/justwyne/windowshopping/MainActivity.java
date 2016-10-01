@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
     private SensorEventListener accelListener;
     private double gap;
     private boolean tiltUp = true;
-    private String state = "TiltUp";
+    private String state = "TiltDown";
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity {
 
                 Log.d(TAG, (int) x + " " + (int) y + " " + (int) z + " " + (int)gap);
 
-                if (gap > 4 && gap < 11) {
+                if (gap > 8 && gap < 11) {
                     sendIntent();
                 }
 //                    if (y > 4) {
@@ -171,9 +171,7 @@ public class MainActivity extends BaseActivity {
 //    }
 
     private void sendIntent() {
-        Log.d(TAG, "send intent New activity");
         sensorManager.unregisterListener(accelListener);
-//        finish();
         Intent intent = new Intent(MainActivity.this, TouchpadActivity.class);
         startActivity(intent);
         sendTilt(state);
