@@ -49,12 +49,9 @@ public class ControlWebSocket extends WebSocketClient {
     private void switchAction(JSONObject jsonObject) throws JSONException {
         String action = jsonObject.getString("action");
         switch (action) {
-            case "trigger_mode":
-                Log.d("Test", "HelloWorld");
+            case "TiltUp":
+                System.out.println( "Trigger: dfkgjfkg");
                 trigger_event(jsonObject);
-                break;
-
-            case "current_product":
                 break;
         }
     }
@@ -71,18 +68,13 @@ public class ControlWebSocket extends WebSocketClient {
     }
 
     private void trigger_event(JSONObject jsonObject) throws JSONException {
-        int trigger = jsonObject.getInt("mode");
         Intent intent;
-
-        if( trigger == TOUCHPAD_TRIGGER ) {
-            intent = new Intent(context, MainActivity.class);
-            context.startActivity(intent);
-        } else if( trigger == SHOPPING_TRIGGER ) {
-            JSONObject productObject = jsonObject.getJSONObject("product");
-            intent = new Intent(context, DetailsActivity.class);
-            intent.putExtra("product", productObject.toString());
-            context.startActivity(intent);
-        }
+        JSONObject event = jsonObject.getJSONObject("event");
+        String event_id = event.getString("event_id");
+        intent = new Intent(context, MainActivity.class);
+        intent.putExtra("event", event_id);
+        context.startActivity(intent);
+        System.out.println( "Trigger: sent");
     }
 
 

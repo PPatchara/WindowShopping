@@ -61,54 +61,11 @@ public class BaseActivity extends AppCompatActivity{
         return String.format("%d.%d.%d.%d", (ip & 0xff), (ip >> 8 & 0xff), (ip >> 16 & 0xff), (ip >> 24 & 0xff));
     }
 
-//    public boolean acceleroListener() {
-//        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-//        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-//        accelListener = new SensorEventListener() {
-//            public void onAccuracyChanged(Sensor sensor, int acc) { }
-//
-//            public void onSensorChanged(SensorEvent event) {
-//                float x = event.values[0];
-//                float y = event.values[1];
-//                float z = event.values[2];
-//                gap = y-x;
-//
-//                if (Math.abs(y) > Math.abs(x)) {
-//                    if (y < 3) {
-//                        Log.e(TAG, "Down");
-//                        tiltUp = false;
-//                    }
-//                    if (y > 4) {
-//                        Log.e(TAG, "Up");
-//                        tiltUp = true;
-//                    }
-//                }
-////                if (-6 > gap && gap > -10 ) {
-////                    tiltUp = false;
-////                    isTiltUp();
-////                }
-//
-//            }
-//        };
-//        return tiltUp;
-//    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.d("Cycle", "onDestroy");
         webSocket.close();
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        sensorManager.registerListener(accelListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
-//    }
-//
-//    public void onStop() {
-//        super.onStop();
-//        sensorManager.unregisterListener(accelListener);
-//    }
 
 }

@@ -114,7 +114,6 @@
 			if(msgJSON['action'] == 'TiltDown') {
 				jumpTo(getLastState());
 				disableAutoSlide();
-				
 			}
 			else if(msgJSON['action'] == 'forward_swipe') {
 				changeState('next');
@@ -133,9 +132,7 @@
 		}
 
 		function getCurrentEvent() {
-			// return carousel.find('div.active').data('id');
 			var currentId = $('li.active').data('id');
-			// var currentId = carousel.find('div.active').data('id');
 			return currentId;
 			console.log(currentId);
 		}
@@ -151,7 +148,8 @@
 		function sendCurrentEvent() {
 			var currentEvent = getCurrentEvent();
 			var data = JSON.stringify({
-				"action": "current_selected",
+				"scenario": "2.1",
+				"action": "current_event",
 				"event_id": currentEvent
 			});
 			console.log(data);
@@ -174,7 +172,6 @@
 		}
 		
 		$(document).ready(function() {
-			
 		});
 
 	</script>

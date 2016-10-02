@@ -35,9 +35,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        acceleroListener();
         ipAddress = getIpAddress();
         System.out.println(ipAddress);
-        acceleroListener();
         setupData();
         initInstance();
         renderEvent();
