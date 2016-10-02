@@ -24,7 +24,7 @@
                 android:layout_margin="4dp">
 
                 <Button
-                    android:id="@+id/btnViewCart"
+                    android:id="@+id/btnEventList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -67,7 +67,7 @@
                         android:layout_marginBottom="8dp"/>
 
                     <TextView
-                        android:id="@+id/tvDescription"
+                        android:id="@+id/tvEventDescription"
                         android:text="No any details."
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                         android:layout_marginRight="8dp"/>
 
                     <TextView
-                        android:id="@+id/tvPrice"
+                        android:id="@+id/tvPrices"
                         android:text="N/A"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
