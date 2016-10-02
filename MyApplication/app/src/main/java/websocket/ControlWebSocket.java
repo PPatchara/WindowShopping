@@ -51,7 +51,7 @@ public class ControlWebSocket extends WebSocketClient {
         switch (action) {
             case "TiltUp":
                 System.out.println( "Trigger: dfkgjfkg");
-                trigger_event(jsonObject);
+//                trigger_event(jsonObject);
                 break;
         }
     }

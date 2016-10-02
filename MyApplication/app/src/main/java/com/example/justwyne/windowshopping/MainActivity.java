@@ -10,16 +10,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.justwyne.windowshopping.models.Event;
 import com.example.justwyne.windowshopping.models.EventList;
 
-import org.java_websocket.client.WebSocketClient;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 public class MainActivity extends BaseActivity {
     private final String TAG = "MainActivity";
     private EventList eventList;
+    private Event event;
 
     String ipAddress;
 
@@ -29,7 +28,7 @@ public class MainActivity extends BaseActivity {
     private double gap;
     private String state = "TiltDown";
 
-    private TextView name, description, place, date, time, price;
+    private TextView tvName, tvDescription, tvPlace, tvDate, tvTime, tvPrice;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,37 +49,24 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initInstance() {
-        name = (TextView) findViewById(R.id.tvEventName);
-        description = (TextView) findViewById(R.id.tvEventDescription);
-        place = (TextView) findViewById(R.id.tvPlace);
-        date = (TextView) findViewById(R.id.tvDate);
-        time = (TextView) findViewById(R.id.tvTime);
-        price = (TextView) findViewById(R.id.tvPrices);
+        tvName = (TextView) findViewById(R.id.tvEventName);
+        tvDescription = (TextView) findViewById(R.id.tvEventDescription);
+        tvPlace = (TextView) findViewById(R.id.tvPlace);
+        tvDate = (TextView) findViewById(R.id.tvDate);
+        tvTime = (TextView) findViewById(R.id.tvTime);
+        tvPrice = (TextView) findViewById(R.id.tvPrices);
     }
 
     private void renderEvent() {
-//        try {
 //            JSONObject productObject = getProduct();
-//            product = productList.getProduct(productObject.getString("product_id"));
-//            color = product.getColorByName(productObject.getString("color"));
-//
-//            tvName.setText(product.getName());
-//            tvDetails.setText(product.getDetails());
-//            tvPrice.setText("$ " + product.getPrice());
-//
-//            String imageName = color.getImageNameList().get(1);
-//            int res = getResources().getIdentifier(imageName, "drawable", getPackageName());
-//            ivImage.setImageResource(res);
-//
-//
-//            tvDescription.setText(product.getDescription());
-//            tvColor.setText(color.getName());
-//
-//            createColorChoices();
-//            createSizeChoices();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+            event = eventList.getEvent("#001");
+
+            tvName.setText(event.getName());
+            tvDescription.setText(event.getDescription());
+            tvPlace.setText(event.getPlace());
+            tvDate.setText(event.getDate());
+            tvTime.setText(event.getTime());
+            tvPrice.setText(event.getPrice());
     }
 
     private void acceleroListener() {

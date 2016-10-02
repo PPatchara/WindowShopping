@@ -61,31 +61,9 @@ public class TouchpadActivity extends BaseActivity implements GestureDetector.On
                 if ((int) gap > -4 && (int) gap < 4) {
                     sendIntent();
                 }
-
-//                if (Math.abs(y) > Math.abs(x)) {
-//                    if (y < 3) {
-//                        Log.e(TAG, "Down");
-//                    }
-//                    if (y > 4) {
-//                        Log.e(TAG, "Up");
-//                        tiltDown = false;
-//                        isTiltDown();
-//                    }
-//                }
-//                if (-4 < gap && gap < -1 ) {
-//                    tiltDown = false;
-//                    isTiltDown();
-//                }
-
             }
         };
     }
-
-//    public void isTiltDown() {
-//        if (!tiltDown){
-//            sendIntent();
-//        }
-//    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

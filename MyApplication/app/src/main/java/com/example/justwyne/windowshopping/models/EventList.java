@@ -60,6 +60,19 @@ public class EventList {
         }catch (JSONException ex){
             Log.e("JsonParser",ex.getMessage());
         }
+    }
 
+    public Event getEvent(String eventId){
+        for (int index=0; index < length(); index++){
+            String id = events.get(index).getId();
+            if (id.equalsIgnoreCase(eventId)){
+                return events.get(index);
+            }
+        }
+        return null;
+    }
+
+    public int length(){
+        return events.size();
     }
 }
