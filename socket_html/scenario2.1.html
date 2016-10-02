@@ -112,8 +112,9 @@
 			var msgJSON = JSON.parse(current.data);
 
 			if(msgJSON['action'] == 'TiltDown') {
-				disableAutoSlide();
 				jumpTo(getLastState());
+				disableAutoSlide();
+				
 			}
 			else if(msgJSON['action'] == 'forward_swipe') {
 				changeState('next');
