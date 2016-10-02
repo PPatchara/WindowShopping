@@ -122,6 +122,8 @@
 				changeState('prev');
 			}else if(msgJSON['action'] == 'TiltUp') {
 				keepLastState();
+				getCurrentEvent();
+				sendCurrentEvent()
 				enableAutoSlide();
 			}
 		}
@@ -172,6 +174,7 @@
 		}
 		
 		$(document).ready(function() {
+
 		});
 
 	</script>
