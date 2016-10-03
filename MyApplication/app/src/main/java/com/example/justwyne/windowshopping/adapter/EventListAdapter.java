@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.justwyne.windowshopping.EventListActivity;
 import com.example.justwyne.windowshopping.R;
 import com.example.justwyne.windowshopping.models.Event;
 
@@ -41,13 +43,20 @@ public class EventListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater mInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if(view == null)
             view = mInflater.inflate(R.layout.list_events_layout, parent, false);
 
+        final Event event = eventList.get(position);
+
+        final TextView eventName = (TextView)view.findViewById(R.id.tvEventName);
+        eventName.setText(event.getName());
+
+        final TextView subCategory = (TextView)view.findViewById(R.id.tvEventSubCategory);
+        subCategory.setText(event.getSubcategory());
 
         return view;
     }

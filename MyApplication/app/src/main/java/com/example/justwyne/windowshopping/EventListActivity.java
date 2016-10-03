@@ -2,6 +2,9 @@ package com.example.justwyne.windowshopping;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -33,5 +36,6 @@ public class EventListActivity extends AppCompatActivity {
     private void setupEventListView() {
         adapter = new EventListAdapter(EventListActivity.this, savingList.getEventList());
         mListView.setAdapter(adapter);
+        
     }
 }
