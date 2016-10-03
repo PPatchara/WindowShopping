@@ -49,11 +49,11 @@ public class MainActivity extends BaseActivity {
 
     private void setupData(){
         eventList = EventList.getInstance();
+        savingList = SavingList.getInstance();
         eventList.loadData(getResources().openRawResource(R.raw.event));
     }
 
     private void initInstance() {
-        savingList = SavingList.getInstance();
         tvName = (TextView) findViewById(R.id.tvEvent);
         tvDescription = (TextView) findViewById(R.id.tvEventDescription);
         tvPlace = (TextView) findViewById(R.id.tvPlace);
@@ -65,8 +65,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 savingList.add(event);
-                String id = savingList.getEvent(event).getId();
-                Toast.makeText(MainActivity.this,id + "saved",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"saved",Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -12,6 +12,7 @@ import com.example.justwyne.windowshopping.EventListActivity;
 import com.example.justwyne.windowshopping.R;
 import com.example.justwyne.windowshopping.models.Event;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class EventListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return eventList.get(i);
     }
 
     @Override

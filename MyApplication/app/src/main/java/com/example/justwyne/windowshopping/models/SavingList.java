@@ -35,10 +35,11 @@ public class SavingList implements Serializable {
         eventList.add(event);
     }
 
-    public Event getEvent(Event event){
-        for (Event eventObj : eventList) {
-            if (eventObj.equals(event)) {
-                return eventObj;
+    public Event getEvent(String eventId){
+        for (int index=0; index < length(); index++) {
+            String id = eventList.get(index).getId();
+            if (id.equalsIgnoreCase(eventId)) {
+                return eventList.get(index);
             }
         }
         return null;
@@ -46,5 +47,9 @@ public class SavingList implements Serializable {
 
     public ArrayList<Event> getEventList() {
         return eventList;
+    }
+
+    public int length(){
+        return eventList.size();
     }
 }
