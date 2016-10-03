@@ -30,6 +30,7 @@
         <activity android:name=".OrderCompleteActivity" />
         <activity android:name=".TouchpadActivity" />
         <activity android:name=".EventListActivity" />
+        <activity android:name=".EmptyActivity"></activity>
     </application>
 
 </manifest>
