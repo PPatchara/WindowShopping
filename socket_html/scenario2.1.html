@@ -101,7 +101,7 @@
 		// 	// });
 		// });
 
-		var ws = new WebSocket("ws://10.217.24.190:8887/pos");
+		var ws = new WebSocket("ws://localhost:8887/pos");
 		var carousel = $('.carousel');
 		var currentState = 0;
 
@@ -113,6 +113,8 @@
 
 			if(msgJSON['action'] == 'TiltDown') {
 				jumpTo(getLastState());
+				getCurrentEvent();
+				sendCurrentEvent(); //
 				disableAutoSlide();
 			}
 			else if(msgJSON['action'] == 'forward_swipe') {
@@ -123,7 +125,7 @@
 			}else if(msgJSON['action'] == 'TiltUp') {
 				keepLastState();
 				getCurrentEvent();
-				sendCurrentEvent()
+				sendCurrentEvent();
 				enableAutoSlide();
 			}
 		}

@@ -2,6 +2,7 @@ package com.example.justwyne.windowshopping;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -19,6 +20,7 @@ import com.example.justwyne.windowshopping.models.SavingList;
 
 public class MainActivity extends BaseActivity {
     private final String TAG = "MainActivity";
+    public static final String PREFS = "MyPreferences";
     private EventList eventList;
     private Event event;
     private SavingList savingList;
@@ -86,14 +88,16 @@ public class MainActivity extends BaseActivity {
 
     private void renderEvent() {
 //            JSONObject productObject = getProduct();
-            event = eventList.getEvent("#001");
+        SharedPreferences sharedPreferences = getSharedPreferences(PREFS,MODE_PRIVATE);
+        String eventId = sharedPreferences.getString("serverMessage", "#001");
+        event = eventList.getEvent("#001");
 
-            tvName.setText(event.getName());
-            tvDescription.setText(event.getDescription());
-            tvPlace.setText(event.getPlace());
-            tvDate.setText(event.getDate());
-            tvTime.setText(event.getTime());
-            tvPrice.setText(event.getPrice());
+        tvName.setText(event.getName());
+        tvDescription.setText(event.getDescription());
+        tvPlace.setText(event.getPlace());
+        tvDate.setText(event.getDate());
+        tvTime.setText(event.getTime());
+        tvPrice.setText(event.getPrice());
     }
 
     private void acceleroListener() {

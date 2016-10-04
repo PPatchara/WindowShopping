@@ -2,6 +2,7 @@ package websocket;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.justwyne.windowshopping.DetailsActivity;
@@ -14,6 +15,8 @@ import org.json.JSONObject;
 
 import java.net.URI;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * Created by Justwyne on 5/26/16 AD.
  */
@@ -21,8 +24,12 @@ public class ControlWebSocket extends WebSocketClient {
 
     int TOUCHPAD_TRIGGER = 0;
     int SHOPPING_TRIGGER = 1;
+    public static final String PREFS = "MyPreferences";
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     Context context;
+
 
     public ControlWebSocket(Context context, URI serverURI) {
         super(serverURI);
@@ -40,18 +47,32 @@ public class ControlWebSocket extends WebSocketClient {
 
         try {
             JSONObject jsonObject = new JSONObject(s);
-            switchAction(jsonObject);
+            sharedPreferences = context.getSharedPreferences(PREFS,Context.MODE_PRIVATE);
+
+
+
+            sendEvent(jsonObject);
+//            switchAction(jsonObject);
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    private void switchAction(JSONObject jsonObject) throws JSONException {
+    private void switchAction(JSONObject jsonObject) throws JSONException { //revised
         String action = jsonObject.getString("action");
+        JSONObject event = jsonObject.getJSONObject("event");
         switch (action) {
             case "TiltUp":
                 System.out.println( "Trigger: dfkgjfkg");
-//                trigger_event(jsonObject);
+                String eventId = event.getString("event_id");
+                editor = sharedPreferences.edit();
+                editor.putString("serverMessage",eventId);
+                editor.commit();
+                System.out.println(eventId);
+                break;
+            case "TiltDown":
+                String nothing = jsonObject.getString("event");
+                System.out.println(nothing);
                 break;
         }
     }
@@ -67,14 +88,19 @@ public class ControlWebSocket extends WebSocketClient {
         e.printStackTrace();
     }
 
-    private void trigger_event(JSONObject jsonObject) throws JSONException {
-        Intent intent;
-        JSONObject event = jsonObject.getJSONObject("event");
-        String event_id = event.getString("event_id");
-        intent = new Intent(context, MainActivity.class);
-        intent.putExtra("event", event_id);
-        context.startActivity(intent);
-        System.out.println( "Trigger: sent");
+    private void sendEvent(JSONObject jsonObject) throws JSONException { //revised
+//        Intent intent;
+//        JSONObject event = jsonObject.getJSONObject("event");
+//        String event_id = event.getString("event_id");
+//        intent = new Intent(context, MainActivity.class);
+//        intent.putExtra("event", event_id);
+//        context.startActivity(intent);
+//        System.out.println( "Trigger: sent");
+        String eventId = jsonObject.getString("event_id");
+        editor = sharedPreferences.edit();
+        editor.putString("serverMessage",eventId);
+        editor.commit();
+        System.out.println(eventId);
     }
 
 
