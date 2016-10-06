@@ -26,7 +26,7 @@ public class ControlWebSocket extends WebSocketClient {
     int SHOPPING_TRIGGER = 1;
     public static final String PREFS = "MyPreferences";
     SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences.Editor editor;
 
     Context context;
 
@@ -51,8 +51,8 @@ public class ControlWebSocket extends WebSocketClient {
 
 
 
-            sendEvent(jsonObject);
-//            switchAction(jsonObject);
+//            sendEvent(jsonObject);
+            switchAction(jsonObject);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -60,21 +60,34 @@ public class ControlWebSocket extends WebSocketClient {
 
     private void switchAction(JSONObject jsonObject) throws JSONException { //revised
         String action = jsonObject.getString("action");
-        JSONObject event = jsonObject.getJSONObject("event");
-        switch (action) {
-            case "TiltUp":
-                System.out.println( "Trigger: dfkgjfkg");
+        if (action.equals("TiltUp")) {
+            if (jsonObject.has("event")) {
+                System.out.println( "Trigger: TiltUp w event");
+                JSONObject event = jsonObject.getJSONObject("event");
                 String eventId = event.getString("event_id");
                 editor = sharedPreferences.edit();
                 editor.putString("serverMessage",eventId);
                 editor.commit();
                 System.out.println(eventId);
-                break;
-            case "TiltDown":
-                String nothing = jsonObject.getString("event");
-                System.out.println(nothing);
-                break;
+            }else {
+
+            }
+        }else if (action.equals("TiltUp")) {
+
         }
+//        switch (action) {
+//            case "TiltUp":
+//                System.out.println( "Trigger: dfkgjfkg");
+//                JSONObject event = jsonObject.getJSONObject("event");
+//                String eventId = event.getString("event_id");
+//                editor = sharedPreferences.edit();
+//                editor.putString("serverMessage",eventId);
+//                editor.commit();
+//                System.out.println(eventId);
+//                break;
+//            case "TiltDown":
+//                break;
+//        }
     }
 
     @Override

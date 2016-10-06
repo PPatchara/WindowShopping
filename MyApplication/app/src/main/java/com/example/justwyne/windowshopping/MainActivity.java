@@ -90,14 +90,19 @@ public class MainActivity extends BaseActivity {
 //            JSONObject productObject = getProduct();
         SharedPreferences sharedPreferences = getSharedPreferences(PREFS,MODE_PRIVATE);
         String eventId = sharedPreferences.getString("serverMessage", "#001");
-        event = eventList.getEvent("#001");
+        System.out.println(eventId);
+        if (eventId == null) {
+            return;
+        } else {
+            event = eventList.getEvent("#001");
+            tvName.setText(event.getName());
+            tvDescription.setText(event.getDescription());
+            tvPlace.setText(event.getPlace());
+            tvDate.setText(event.getDate());
+            tvTime.setText(event.getTime());
+            tvPrice.setText(event.getPrice());
+        }
 
-        tvName.setText(event.getName());
-        tvDescription.setText(event.getDescription());
-        tvPlace.setText(event.getPlace());
-        tvDate.setText(event.getDate());
-        tvTime.setText(event.getTime());
-        tvPrice.setText(event.getPrice());
     }
 
     private void acceleroListener() {
