@@ -12,11 +12,29 @@
 	<script type="text/javascript" src="js/handlebars-v4.0.5.js"></script>
 	<script type="text/javascript" src="js/lodash.min.js"></script>
 	<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script> -->
-	<script type="text/javascript" src="js/thumbnail-slider.js"></script>
+<!-- 	<script type="text/javascript" src="js/thumbnail-slider.js"></script> -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/lightslider.js"></script> 
 	
 <!-- 	<link rel="stylesheet" href="css/bootstrap.min.css"> -->
-	<link rel="stylesheet" href="css/thumbs2.css">
-	<link rel="stylesheet" href="css/thumbnail-slider.css">
+<!-- 	<link rel="stylesheet" href="css/thumbs2.css">
+	<link rel="stylesheet" href="css/thumbnail-slider.css"> -->
+	<link rel="stylesheet"  href="css/lightslider.css"/>
+    
+    <style>
+        ul{
+            list-style: none outside none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .demo{
+            width: 15000px;
+        }
+        li.lslide.active img{
+        	border:10px solid black;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -53,7 +71,7 @@
 	</div>-->
 
 	    <!--start-->
-    <div style="max-width:1500px; margin:0 auto;">
+<!--     <div style="max-width:1500px; margin:0 auto;">
 
         <div style="float:left;">
             <div id="thumbnail-slider">
@@ -61,18 +79,18 @@
                     <ul>
                         <li>
                             <a href="/">
-                                <span class="thumb" style="background-image:url(img/1.jpg)">
+                                <span class="thumb" style="background-image:url(images/1.png)">
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a class="thumb" href="img/2.jpg"></a>
+                            <a class="thumb" href="images/2.png)"></a>
                         </li>
                         <li>
-                            <a class="thumb" href="img/3.jpg"></a>
+                            <a class="thumb" href="images/3.png)"></a>
                         </li>
                         <li>
-                            <a class="thumb" href="img/4.jpg"></a>
+                            <a class="thumb" href="images/4.png)"></a>
                         </li>
                     </ul>
                 </div>
@@ -81,8 +99,32 @@
 
         <div style="clear:both;"></div>
 
-    </div>
+    </div> -->
     <!--end-->
+
+	<div class="demo">
+        <div class="item">
+            <ul id="publicMethods" class="gallery list-unstyled">
+                <li>
+                    <!-- <img src="img/cS-1.jpg"> -->
+                    <img src="images/1.png">
+                </li>
+                <li>
+                    <!-- <img src="img/cS-2.jpg"> -->
+                    <img src="images/2.png">
+                </li>
+                <li>
+                    <!-- <img src="img/cS-3.jpg"> -->
+                    <img src="images/3.png">
+                </li>
+                <li>
+                    <!-- <img src="img/cS-4.jpg"> -->
+                    <img src="images/4.png">
+                </li>
+            </ul>
+        </div>
+    </div>	
+
 	<script>
 
 		// var ws = new WebSocket("ws://localhost:8887/pos");
@@ -167,6 +209,7 @@
 		var ws = new WebSocket("ws://localhost:8887/pos");
 		var currentState = 0;
 		var eventList = ["#001","#002","#003","#004"];
+		var slider;
 
 		ws.onmessage = function receiveData (current) {
 
@@ -175,16 +218,18 @@
 			var msgJSON = JSON.parse(current.data);
 
 			if(msgJSON['action'] == 'TiltDown') {
-				jumpTo(getLastState());
 				disableAutoSlide();
+				jumpTo(getLastState());
 			}
 			else if(msgJSON['action'] == 'forward_swipe') {
+				changeStateNext();
 				console.log('forward_swipe');
-				mcThumbnailSlider.next();
+				// mcThumbnailSlider.next();
 			}
 			else if(msgJSON['action'] == 'backward_swipe') {
+				changeStatePrev();
 				console.log('backward_swipe');
-				mcThumbnailSlider.prev();
+				// mcThumbnailSlider.prev();
 			}
 			else if(msgJSON['action'] == 'TiltUp') {
 				keepLastState();
@@ -197,20 +242,33 @@
 			sendCurrentEvent();
 		}
 
-		function changeState(role) {
-			mcThumbnailSlider.next()
+		// function changeState(role) {
+		// 	mcThumbnailSlider.next()
+		// 	sendCurrentEvent();
+		// }
+
+		function changeStateNext() {
+        	slider.goToNextSlide(); 
+			sendCurrentEvent();
+		}
+		
+		function changeStatePrev() {
+			slider.goToPrevSlide(); 
 			sendCurrentEvent();
 		}
 
 		function getCurrentEvent() {
-			var currentPos = mcThumbnailSlider.getPos();
-			var currentId = eventList[currentPos];
+			// var currentPos = mcThumbnailSlider.getPos();
+			var slideCount = slider.getCurrentSlideCount();
+			var currentId = eventList[slideCount-1];
 			return currentId;
 			console.log(currentId);
 		}
 
 		function keepLastState() {
-			currentState = mcThumbnailSlider.getPos();
+			// currentState = mcThumbnailSlider.getPos();
+			currentState = slider.getCurrentSlideCount();
+			console.log("KeepState: " + currentState);
 		}
 
 		function getLastState() {
@@ -229,19 +287,34 @@
 		}
 
 		function disableAutoSlide() {
-			mcThumbnailSlider.toggle();
+			// mcThumbnailSlider.toggle();
+			slider.pause();
 			console.log('disable');
 		}
 
 		function enableAutoSlide() {
-			mcThumbnailSlider.toggle();
+			// mcThumbnailSlider.toggle();
+			slider.play();
 			console.log('enable');
 		}
 
 		function jumpTo(currentState) {
-			mcThumbnailSlider.display(currentState);
-			console.log(currentState);
+			// mcThumbnailSlider.display(currentState);
+			slider.goToSlide(currentState);
+			console.log("JumpTo: " + currentState);
 		}
+
+		$(document).ready(function() {
+            slider = $('#publicMethods').lightSlider({
+            	item:4,
+                slideMargin:2,
+                slideWidth:200,
+                loop:true,
+                thumbItem:10,
+                speed:500,
+                auto:true
+            });
+        });
 
 	</script>
 </body>
